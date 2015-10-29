@@ -1,0 +1,26 @@
+//
+//  InAppSDK-Prefix.pch
+//  InAppSDK
+//
+//  Created by Senthil Kumar Periyasamy on 10/14/15.
+//  Copyright (c) 2015 CyberSource, a Visa Company. All rights reserved.
+//
+
+#ifndef InAppSDK_InAppSDK_Prefix_pch
+#define InAppSDK_InAppSDK_Prefix_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#ifdef __OBJC__
+#import <Foundation/Foundation.h>
+#import "InAppSDKGateway.h"
+#import "InAppSDKGatewayResponse.h"
+#import "InAppSDKGatewayProtocol.h"
+#import "InAppSDKError.h"
+#import "InAppSDKClientServerProtocol.h"
+#import "InAppSDKTransactionObject.h"
+#import "InAppSDKGatewayResponse.h"
+#endif
+
+#endif
