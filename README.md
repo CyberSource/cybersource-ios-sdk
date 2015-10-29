@@ -35,58 +35,64 @@ InAppSDKGateway * gateway = [InAppSDKGateway sharedInstance];
 //Delegate, Refer InAppSDKGatewayProtocol.h
 -(void) encryptPaymentDataServiceFinishedWithGatewayResponse:(InAppSDKGatewayResponse *)paramResponseData withError:(InAppSDKError *)paramError
 {
-if(paramError != nil || paramResponseData != nil)
-{
-NSMutableString* statusMsg = [NSMutableString new];
-
-if (paramResponseData)
-{
-[statusMsg appendString: @"\n Encrypt Payment Data Service Response:"];
-[statusMsg appendFormat: @"\n  * Accepted: %@", paramResponseData.isAccepted ? @"Yes" : @"No"];
+  if(paramError != nil || paramResponseData != nil)
+  {
+    NSMutableString* statusMsg = [NSMutableString new];
+    
+    if (paramResponseData)
+    {
+      [statusMsg appendString: @"\n Encrypt Payment Data Service Response:"];
+      [statusMsg appendFormat: @"\n  * Accepted: %@", paramResponseData.isAccepted ? @"Yes" : @"No"];
+    }
+    
+    // paramResponseData.encryptedPayment.data should give the encrypted payment blob.
+    NSLog(@"%@", statusMsg);
+  }
 }
 
-// paramResponseData.encryptedPayment.data should give the encrypted payment blob.
-NSLog(@"%@", statusMsg);
-}
-}
+```
 
+```objc
 The following helper functions shows how to populate the InAppSDKCardData and InAppSDKMerchant.
 
 -(InAppSDKCardData*) getTestCardData
 {
-InAppSDKCardData* testCardData = [[InAppSDKCardData alloc] init];
-
-testCardData.accountNumber = @"4111111111111111";
-testCardData.expirationMonth = @"12";
-testCardData.expirationYear = @"2018";
-[testCardData setCvNumber:@"123"];
-
-return testCardData;
+  InAppSDKCardData* testCardData = [[InAppSDKCardData alloc] init];
+  
+  testCardData.accountNumber = @"4111111111111111";
+  testCardData.expirationMonth = @"12";
+  testCardData.expirationYear = @"2018";
+  [testCardData setCvNumber:@"123"];
+  
+  return testCardData;
 }
 
+```
+
+```objc
 -(InAppSDKMerchant*) getMerchantData
 {
-InAppSDKMerchant *merchantData = [[InAppSDKMerchant alloc] init];
-
-merchantData.userName = kInAppTestUserName;
-merchantData.merchantID = kInAppTestMerchantID;
-merchantData.merchantReferenceCode = kInAppTestMerchantReferenceNumber;
-
-//-------WARNING!----------------
-// This part of the code that generates the Signature is present here only to show as a sample.
-// Signature generation must be done at the Merchant Server.
-
-InAppSDKSignatureGenerator * signatureGenerator = [[InAppSDKSignatureGenerator alloc] init];
-
-NSString * signature = [signatureGenerator generateSignatureWithMerchantId:kInAppTestMerchantID
-transactionSecretKey:kInAppTestTransactionSecretKey
-merchantReferenceCode:kInAppTestMerchantReferenceNumber ];
-
-NSLog(@"Signature:%@", signature);
-
-merchantData.passwordDigest = signature;
-
-return merchantData;
+    InAppSDKMerchant *merchantData = [[InAppSDKMerchant alloc] init];
+    
+    merchantData.userName = kInAppTestUserName;
+    merchantData.merchantID = kInAppTestMerchantID;
+    merchantData.merchantReferenceCode = kInAppTestMerchantReferenceNumber;
+    
+    //-------WARNING!----------------
+    // This part of the code that generates the Signature is present here only to show as a sample.
+    // Signature generation must be done at the Merchant Server.
+    
+    InAppSDKSignatureGenerator * signatureGenerator = [[InAppSDKSignatureGenerator alloc] init];
+    
+    NSString * signature = [signatureGenerator generateSignatureWithMerchantId:kInAppTestMerchantID
+    transactionSecretKey:kInAppTestTransactionSecretKey
+    merchantReferenceCode:kInAppTestMerchantReferenceNumber ];
+    
+    NSLog(@"Signature:%@", signature);
+    
+    merchantData.passwordDigest = signature;
+    
+    return merchantData;
 }
 
 ```
