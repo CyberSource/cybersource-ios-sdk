@@ -1,11 +1,9 @@
 # cybersource-ios-sdk
 This is a private repo for the CyberSource InApp SDK, it will be moved under CyberSource when it goes public
 
-Integrating CyberSource InAppSDK for iOS Applications. 
-------------------------------------------------------
+Integrating iOS InAppSDK. 
 
-Developer needs to include the ``` InAppSDK.framework ``` in to the application.
-
+Include the ``` InAppSDK.framework ``` in to the application.
 
 Once included, make sure in “Build Settings” tab, in section “Search Paths” the path to these frameworks are added correctly. 
 
@@ -14,7 +12,6 @@ After including the frameworks and the path now try to include the following fra
 #import <InAppSDK/InAppSDK.h>
 ```
 
-Now the App can do the following to access the API.
 ```objc
 //Initialize the InAppSDK for CYBS Gateway Environtment.
 [InAppSDKSettings sharedInstance].cybsEnvironment = ENV_TEST;
@@ -32,9 +29,9 @@ transactionObject.cardData = [self getTestCardData];
 InAppSDKGateway * gateway = [InAppSDKGateway sharedInstance];
 [gateway performPaymentDataEncryption:transactionObject withDelegate:self];
 
+```
 
-
-
+```objc
 //Delegate, Refer InAppSDKGatewayProtocol.h
 -(void) encryptPaymentDataServiceFinishedWithGatewayResponse:(InAppSDKGatewayResponse *)paramResponseData withError:(InAppSDKError *)paramError
 {
@@ -53,7 +50,7 @@ NSLog(@"%@", statusMsg);
 }
 }
 
-
+The following helper functions shows how to populate the InAppSDKCardData and InAppSDKMerchant.
 
 -(InAppSDKCardData*) getTestCardData
 {
