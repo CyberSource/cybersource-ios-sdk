@@ -15,7 +15,7 @@ After including the frameworks and the path now try to include the following fra
 ```
 
 Now the App can do the following to access the API.
-
+```objc
 //Initialize the InAppSDK for CYBS Gateway Environtment.
 [InAppSDKSettings sharedInstance].cybsEnvironment = ENV_TEST;
 
@@ -91,3 +91,5 @@ merchantData.passwordDigest = signature;
 
 return merchantData;
 }
+
+```
