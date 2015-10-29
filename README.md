@@ -7,6 +7,7 @@ Include the ```InAppSDK.framework``` in to the application.
 
 Once included, make sure in “Build Settings” tab, in section “Search Paths” the path to these frameworks are added correctly. 
 
+##SDK Usage 
 After including the frameworks and the path now try to include the following framework headers in the application.
 ```objc
 #import <InAppSDK/InAppSDK.h>
