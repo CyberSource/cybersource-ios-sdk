@@ -4,7 +4,7 @@ This is a private repo for the CyberSource InApp SDK, it will be moved under Cyb
 Integrating CyberSource InAppSDK for iOS Applications. 
 ------------------------------------------------------
 
-Developer needs to include the InAppSDK.framework in to the application.
+Developer needs to include the ``` InAppSDK.framework ``` in to the application.
 
 
 Once included, make sure in “Build Settings” tab, in section “Search Paths” the path to these frameworks are added correctly. 
