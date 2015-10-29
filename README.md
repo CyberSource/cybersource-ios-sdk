@@ -1,7 +1,7 @@
 # cybersource-ios-sdk
 This is a private repo for the CyberSource InApp SDK, it will be moved under CyberSource when it goes public
 
-##SDK Installation. 
+##SDK Installation 
 
 Include the ```InAppSDK.framework``` in to the application.
 
@@ -53,7 +53,7 @@ InAppSDKGateway * gateway = [InAppSDKGateway sharedInstance];
 ```
 
 ```objc
-The following helper functions shows how to populate the InAppSDKCardData and InAppSDKMerchant.
+//The following helper functions shows how to populate the InAppSDKCardData and InAppSDKMerchant.
 
 -(InAppSDKCardData*) getTestCardData
 {
