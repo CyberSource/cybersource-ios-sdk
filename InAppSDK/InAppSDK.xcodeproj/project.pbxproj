@@ -62,7 +62,7 @@
 		4B644CEF1BD6DF4B00C88094 /* InAppSDKCybsResponseNodeFaultDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B644CDF1BD6DF4B00C88094 /* InAppSDKCybsResponseNodeFaultDetails.m */; };
 		4B644CF01BD6DF4B00C88094 /* InAppSDKCybsResponseNodeReplyMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B644CE01BD6DF4B00C88094 /* InAppSDKCybsResponseNodeReplyMessage.h */; };
 		4B644CF11BD6DF4B00C88094 /* InAppSDKCybsResponseNodeReplyMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B644CE11BD6DF4B00C88094 /* InAppSDKCybsResponseNodeReplyMessage.m */; };
-		4B644D011BD6DFCC00C88094 /* InAppSDKEncryptedPayment.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B644CF21BD6DFCC00C88094 /* InAppSDKEncryptedPayment.h */; };
+		4B644D011BD6DFCC00C88094 /* InAppSDKEncryptedPayment.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B644CF21BD6DFCC00C88094 /* InAppSDKEncryptedPayment.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4B644D021BD6DFCC00C88094 /* InAppSDKEncryptedPayment.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B644CF31BD6DFCC00C88094 /* InAppSDKEncryptedPayment.m */; };
 		4B644D041BD6DFCC00C88094 /* InAppSDKGateway.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B644CF51BD6DFCC00C88094 /* InAppSDKGateway.m */; };
 		4B644D051BD6DFCC00C88094 /* InAppSDKGatewayCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B644CF61BD6DFCC00C88094 /* InAppSDKGatewayCore.h */; };
@@ -419,6 +419,7 @@
 				4B644D071BD6DFCC00C88094 /* InAppSDKGatewayError.h in Headers */,
 				4B644D0A1BD6DFCC00C88094 /* InAppSDKGatewayResponse.h in Headers */,
 				4B644D1B1BD6E70E00C88094 /* InAppSDKGateway.h in Headers */,
+				4B644D011BD6DFCC00C88094 /* InAppSDKEncryptedPayment.h in Headers */,
 				4B644CA61BD6DDB000C88094 /* InAppSDKCardData.h in Headers */,
 				4B644CB41BD6DE0C00C88094 /* InAppSDKCybsSoapRequest.h in Headers */,
 				4B644CF01BD6DF4B00C88094 /* InAppSDKCybsResponseNodeReplyMessage.h in Headers */,
@@ -434,7 +435,6 @@
 				4B644CB61BD6DE0C00C88094 /* InAppSDKSoapNamespace.h in Headers */,
 				4B644CE41BD6DF4B00C88094 /* InAppSDKCybsResponseNodeBody.h in Headers */,
 				4BE4D9DC1BCEB9EF00C44F74 /* InAppSDK-Prefix.pch in Headers */,
-				4B644D011BD6DFCC00C88094 /* InAppSDKEncryptedPayment.h in Headers */,
 				4B644D151BD6E01F00C88094 /* InAppSDKSettingsPrivate.h in Headers */,
 				4B644CC21BD6DE6F00C88094 /* InAppSDKConnection.h in Headers */,
 				4B644CB81BD6DE0C00C88094 /* InAppSDKSoapNode.h in Headers */,
