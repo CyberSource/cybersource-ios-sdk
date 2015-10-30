@@ -70,7 +70,7 @@
 		4B644D071BD6DFCC00C88094 /* InAppSDKGatewayError.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B644CF81BD6DFCC00C88094 /* InAppSDKGatewayError.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4B644D081BD6DFCC00C88094 /* InAppSDKGatewayError.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B644CF91BD6DFCC00C88094 /* InAppSDKGatewayError.m */; };
 		4B644D091BD6DFCC00C88094 /* InAppSDKGatewayProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B644CFA1BD6DFCC00C88094 /* InAppSDKGatewayProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4B644D0A1BD6DFCC00C88094 /* InAppSDKGatewayResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B644CFB1BD6DFCC00C88094 /* InAppSDKGatewayResponse.h */; };
+		4B644D0A1BD6DFCC00C88094 /* InAppSDKGatewayResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B644CFB1BD6DFCC00C88094 /* InAppSDKGatewayResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4B644D0B1BD6DFCC00C88094 /* InAppSDKGatewayResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B644CFC1BD6DFCC00C88094 /* InAppSDKGatewayResponse.m */; };
 		4B644D0C1BD6DFCC00C88094 /* InAppSDKInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B644CFD1BD6DFCC00C88094 /* InAppSDKInternal.h */; };
 		4B644D0D1BD6DFCC00C88094 /* InAppSDKInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B644CFE1BD6DFCC00C88094 /* InAppSDKInternal.m */; };
@@ -81,7 +81,7 @@
 		4B644D151BD6E01F00C88094 /* InAppSDKSettingsPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B644D121BD6E01F00C88094 /* InAppSDKSettingsPrivate.h */; };
 		4B644D181BD6E03200C88094 /* InAppSDKCybsXMLParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B644D161BD6E03200C88094 /* InAppSDKCybsXMLParser.h */; };
 		4B644D191BD6E03200C88094 /* InAppSDKCybsXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B644D171BD6E03200C88094 /* InAppSDKCybsXMLParser.m */; };
-		4B644D1B1BD6E70E00C88094 /* InAppSDKGateway.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B644D1A1BD6E70E00C88094 /* InAppSDKGateway.h */; };
+		4B644D1B1BD6E70E00C88094 /* InAppSDKGateway.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B644D1A1BD6E70E00C88094 /* InAppSDKGateway.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4B7400031BD96924003EEC2E /* InAppSDKSignatureGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B7400021BD96924003EEC2E /* InAppSDKSignatureGenerator.m */; };
 		4BE4D9C51BCEB8D100C44F74 /* InAppSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 4BE4D9C41BCEB8D100C44F74 /* InAppSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4BE4D9CB1BCEB8D100C44F74 /* InAppSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BE4D9BF1BCEB8D100C44F74 /* InAppSDK.framework */; };
@@ -417,10 +417,11 @@
 				4B644C961BD6DCFC00C88094 /* InAppSDKError.h in Headers */,
 				4B644D131BD6E01F00C88094 /* InAppSDKSettings.h in Headers */,
 				4B644D071BD6DFCC00C88094 /* InAppSDKGatewayError.h in Headers */,
+				4B644D0A1BD6DFCC00C88094 /* InAppSDKGatewayResponse.h in Headers */,
+				4B644D1B1BD6E70E00C88094 /* InAppSDKGateway.h in Headers */,
 				4B644CA61BD6DDB000C88094 /* InAppSDKCardData.h in Headers */,
 				4B644CB41BD6DE0C00C88094 /* InAppSDKCybsSoapRequest.h in Headers */,
 				4B644CF01BD6DF4B00C88094 /* InAppSDKCybsResponseNodeReplyMessage.h in Headers */,
-				4B644D0A1BD6DFCC00C88094 /* InAppSDKGatewayResponse.h in Headers */,
 				4B644CBA1BD6DE0C00C88094 /* InAppSDKSoapStructure.h in Headers */,
 				4BE4D9C51BCEB8D100C44F74 /* InAppSDK.h in Headers */,
 				4B644CC41BD6DE6F00C88094 /* InAppSDKHttpConnectionError.h in Headers */,
@@ -432,7 +433,6 @@
 				4B644CE21BD6DF4B00C88094 /* InAppSDKCybsResponseNode.h in Headers */,
 				4B644CB61BD6DE0C00C88094 /* InAppSDKSoapNamespace.h in Headers */,
 				4B644CE41BD6DF4B00C88094 /* InAppSDKCybsResponseNodeBody.h in Headers */,
-				4B644D1B1BD6E70E00C88094 /* InAppSDKGateway.h in Headers */,
 				4BE4D9DC1BCEB9EF00C44F74 /* InAppSDK-Prefix.pch in Headers */,
 				4B644D011BD6DFCC00C88094 /* InAppSDKEncryptedPayment.h in Headers */,
 				4B644D151BD6E01F00C88094 /* InAppSDKSettingsPrivate.h in Headers */,
