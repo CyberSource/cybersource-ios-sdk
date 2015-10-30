@@ -15,7 +15,7 @@ After including the frameworks and the path now try to include the following fra
 
 ```objc
 //Initialize the InAppSDK for CYBS Gateway Environtment.
-[InAppSDKSettings sharedInstance].cybsEnvironment = ENV_TEST;
+[InAppSDKSettings sharedInstance].inAppSDKEnvironment = INAPPSDK_ENV_TEST;
 //Initialize the transaction object which collects all the required information for the encrypt service. InAppSDKTransactionObject * transactionObject = [[InAppSDKTransactionObject alloc] init];
 //Get and Set the Merchant specific credentials [merchantID, Signature, merchant Reference code etc.] //Refer: InAppSDKMerchant.h
 transactionObject.merchant = [self getMerchantData];
