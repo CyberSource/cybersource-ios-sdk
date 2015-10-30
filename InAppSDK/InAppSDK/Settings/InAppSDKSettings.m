@@ -37,8 +37,7 @@ static NSString * const kInAppSDKSettingsKey = @"InAppSDKSettingsKey";
     self = [super init];
     if (self)
     {
-        // default settings according to WF
-        _cybsEnvironment = ENV_LIVE;
+        _inAppSDKEnvironment = INAPPSDK_ENV_TEST;
         
     }
     return self;
@@ -81,7 +80,7 @@ static NSString * const kInAppSDKSettingsKey = @"InAppSDKSettingsKey";
 {
     NSString * returnURL = nil;
     
-    if(_cybsEnvironment == ENV_LIVE)
+    if(_inAppSDKEnvironment == INAPPSDK_ENV_LIVE)
     {
         switch (endPointType)
         {
@@ -105,7 +104,7 @@ static NSString * const kInAppSDKSettingsKey = @"InAppSDKSettingsKey";
         }
         
     }
-    else if( _cybsEnvironment == ENV_TEST)
+    else if( _inAppSDKEnvironment == INAPPSDK_ENV_TEST)
     {
         switch (endPointType)
         {

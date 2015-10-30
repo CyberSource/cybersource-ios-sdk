@@ -10,19 +10,19 @@
  * The LIVE or TEST server
  *
  */
-typedef enum CYBSEnvironment
+typedef enum InAppSDKEnvironment
 {
-    ENV_LIVE,
-    ENV_TEST,
+    INAPPSDK_ENV_LIVE,
+    INAPPSDK_ENV_TEST,
     
-} CYBS_ENVIRONMENT;
+} INAPPSDK_ENVIRONMENT;
 
 @interface InAppSDKSettings : NSObject <NSCoding>
 
 /*!
  Live or Test server
  */
-@property (nonatomic, assign) CYBS_ENVIRONMENT cybsEnvironment;
+@property (nonatomic, assign) INAPPSDK_ENVIRONMENT inAppSDKEnvironment;
 
 //! Returns singleton InAppSDKSettings object
 /*!

@@ -118,7 +118,7 @@ static NSString* kCYBSLocalENVTransactionSecretKey = @"XuPPGtXb8eq7Gi0SB57QfYRG9
 - (void)testPerformPaymentDataEncryption
 {
     //Initialize the InAppSDK for CYBS Gateway Environtment.
-    [InAppSDKSettings sharedInstance].cybsEnvironment = ENV_TEST;
+    [InAppSDKSettings sharedInstance].inAppSDKEnvironment = INAPPSDK_ENV_TEST;
     
     //Intialize the transaction object which collects all the required information for the encryt service.
     InAppSDKTransactionObject * transactionObject = [[InAppSDKTransactionObject alloc] init];
@@ -142,7 +142,7 @@ static NSString* kCYBSLocalENVTransactionSecretKey = @"XuPPGtXb8eq7Gi0SB57QfYRG9
 - (void)testPerformPaymentDataEncryptionforLocalENV
 {
     //Initialize the InAppSDK for CYBS Gateway Environtment.
-    [InAppSDKSettings sharedInstance].cybsEnvironment = ENV_TEST;
+    [InAppSDKSettings sharedInstance].inAppSDKEnvironment = INAPPSDK_ENV_TEST;
     
     //Intialize the transaction object which collects all the required information for the encryt service.
     InAppSDKTransactionObject * transactionObject = [[InAppSDKTransactionObject alloc] init];
