@@ -135,6 +135,7 @@
                     gatewayResponse.decision = INAPPSDK_GATEWAY_DECISION_TYPE_ACCEPT;
                     InAppSDKEncryptedPayment * encryptedPaymentData = [[InAppSDKEncryptedPayment alloc]init];
                     encryptedPaymentData.data = response.nodeReplayMessage.encrypted_payment_data;
+                    gatewayResponse.encryptedPayment = encryptedPaymentData;
                     
                     gatewayResponse.rmsg = response.nodeReplayMessage.encrypt_payment_data_rmsg;
                 }
@@ -142,10 +143,12 @@
                 {
                     gatewayResponse.decision = INAPPSDK_GATEWAY_DECISION_TYPE_ERROR;
                     gatewayResponse.rmsg = response.nodeReplayMessage.encrypt_payment_data_rmsg;
+                    paymentError = [InAppSDKCybsApiError createFromResponse:response];
                 }
                 else if ([response.nodeReplayMessage.decision isEqualToString:kCybsResponseNodeReject])
                 {
                     gatewayResponse.decision = INAPPSDK_GATEWAY_DECISION_TYPE_REJECT;
+                    paymentError = [InAppSDKCybsApiError createFromResponse:response];
                 }
                 else if ([response.nodeReplayMessage.decision isEqualToString:kCybsResponseNodeReview])
                 {
@@ -157,28 +160,6 @@
                     paymentError = [InAppSDKCybsApiError createFromResponse:response];
                 }
                 
-                if ((gatewayResponse.decision == INAPPSDK_GATEWAY_DECISION_TYPE_REJECT) &&
-                    (response.nodeReplayMessage.missingField != nil))
-                {
-                    paymentError = [InAppSDKCybsApiError createFromResponse:response];
-                }
-                else
-                {
-                    gatewayResponse.resultCode = response.nodeReplayMessage.reasonCode;
-                    gatewayResponse.rmsg = response.nodeReplayMessage.encrypt_payment_data_rmsg;
-                    NSInteger reasonCode = [gatewayResponse.resultCode integerValue];
-                    if ((reasonCode != kGatewaySuccess) &&
-                        (reasonCode != kPartiallyApproved))
-                    {
-                        // request was processed but gateway responded with error
-                        paymentError = [InAppSDKCybsApiError createFromResponse:response];
-                    }
-                    else
-                    {
-                        gatewayResponse.requestId = response.nodeReplayMessage.requestID;
-                        [self processWithRequestType:paramRequestType message:response.nodeReplayMessage response:gatewayResponse];
-                    }
-                }
             }
             else
             {
@@ -211,11 +192,7 @@
 - (void) PerformEncryptionPaymentDataServiceWithResponse:(InAppSDKCybsResponseNodeReplyMessage *)aResponse
                       withGatewayResponse:(InAppSDKGatewayResponse *)aGatewayResponse
 {
-//    aGatewayResponse.authorizedAmount = [NSDecimalNumber decimalNumberWithString:aResponse.nodeAuthReply.amount
-//                                                                          locale:[NSDecimalNumber gatewayLocale]];
-//    aGatewayResponse.authCode = aResponse.nodeAuthReply.authorizationCode;
-//    
-//    [self updateGatewayResponse:aGatewayResponse withDateTime:aResponse.nodeAuthReply.authorizedDateTime];
+
 }
 
 - (void) updateGatewayResponse:(InAppSDKGatewayResponse *)aGatewayResponse withDateTime:(NSString *)timeOfGatewayeRequest
