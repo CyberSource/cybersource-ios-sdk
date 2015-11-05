@@ -41,7 +41,7 @@
 //! ics_decision_reason_code node
 @property (nonatomic, strong) NSString * ics_decision_reason_code;
 //! data node
-@property (nonatomic, strong) NSString * data;
+@property (nonatomic, strong) NSString * encrypted_payment_data;
 //! requestDateTime node
 @property (nonatomic, strong) NSString * requestDateTime;
 

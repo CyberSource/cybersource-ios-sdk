@@ -33,6 +33,7 @@ static NSString * const kCybsNodeReplyMessage = @"replyMessage";
         _encrypt_payment_data_return_code = nil;
         _ics_rmsg = nil;
         _ics_decision_reason_code = nil;
+        _encrypted_payment_data = nil;
     }
     return self;
 }

@@ -25,3 +25,4 @@ FOUNDATION_EXPORT const unsigned char InAppSDKVersionString[];
 #import <InAppSDK/InAppSDKCardData.h>
 #import <InAppSDK/InAppSDKMerchant.h>
 #import <InAppSDK/InAppSDKError.h>
+#import <InAppSDK/InAppSDKGatewayError.h>

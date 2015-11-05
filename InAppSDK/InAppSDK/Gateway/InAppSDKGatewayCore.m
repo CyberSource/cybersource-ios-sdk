@@ -134,7 +134,7 @@
                 {
                     gatewayResponse.decision = INAPPSDK_GATEWAY_DECISION_TYPE_ACCEPT;
                     InAppSDKEncryptedPayment * encryptedPaymentData = [[InAppSDKEncryptedPayment alloc]init];
-                    encryptedPaymentData.data = response.nodeReplayMessage.data;
+                    encryptedPaymentData.data = response.nodeReplayMessage.encrypted_payment_data;
                     
                     gatewayResponse.rmsg = response.nodeReplayMessage.encrypt_payment_data_rmsg;
                 }
