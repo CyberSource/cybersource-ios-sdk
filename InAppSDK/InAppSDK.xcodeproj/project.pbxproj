@@ -25,7 +25,7 @@
 		4B0C9B451BFBBEE600772332 /* InAppSDKStringValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0C9B431BFBBEE600772332 /* InAppSDKStringValidator.m */; };
 		4B0C9B481BFBBF2B00772332 /* InAppSDKCardFieldsValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B0C9B461BFBBF2B00772332 /* InAppSDKCardFieldsValidator.h */; };
 		4B0C9B491BFBBF2B00772332 /* InAppSDKCardFieldsValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0C9B471BFBBF2B00772332 /* InAppSDKCardFieldsValidator.m */; };
-		4B0C9B4C1BFCF15400772332 /* InAppSDKAddress.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B0C9B4A1BFCF15400772332 /* InAppSDKAddress.h */; };
+		4B0C9B4C1BFCF15400772332 /* InAppSDKAddress.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B0C9B4A1BFCF15400772332 /* InAppSDKAddress.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4B0C9B4D1BFCF15400772332 /* InAppSDKAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0C9B4B1BFCF15400772332 /* InAppSDKAddress.m */; };
 		4B644C921BD6DCB000C88094 /* InAppSDKKeyChainStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B644C901BD6DCB000C88094 /* InAppSDKKeyChainStore.h */; };
 		4B644C931BD6DCB000C88094 /* InAppSDKKeyChainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B644C911BD6DCB000C88094 /* InAppSDKKeyChainStore.m */; };
@@ -437,6 +437,7 @@
 				4B644D071BD6DFCC00C88094 /* InAppSDKGatewayError.h in Headers */,
 				4B644D0A1BD6DFCC00C88094 /* InAppSDKGatewayResponse.h in Headers */,
 				4B644D1B1BD6E70E00C88094 /* InAppSDKGateway.h in Headers */,
+				4B0C9B4C1BFCF15400772332 /* InAppSDKAddress.h in Headers */,
 				4B644D011BD6DFCC00C88094 /* InAppSDKEncryptedPayment.h in Headers */,
 				4B644CA61BD6DDB000C88094 /* InAppSDKCardData.h in Headers */,
 				4B644CB41BD6DE0C00C88094 /* InAppSDKCybsSoapRequest.h in Headers */,
@@ -449,7 +450,6 @@
 				4B0C9B441BFBBEE600772332 /* InAppSDKStringValidator.h in Headers */,
 				4B644C9A1BD6DD3C00C88094 /* NSDate+InAppSDKUtils.h in Headers */,
 				4B644C921BD6DCB000C88094 /* InAppSDKKeyChainStore.h in Headers */,
-				4B0C9B4C1BFCF15400772332 /* InAppSDKAddress.h in Headers */,
 				4B644CCE1BD6DEBD00C88094 /* InAppSDKCybsApiError.h in Headers */,
 				4B644CE21BD6DF4B00C88094 /* InAppSDKCybsResponseNode.h in Headers */,
 				4B644CB61BD6DE0C00C88094 /* InAppSDKSoapNamespace.h in Headers */,
