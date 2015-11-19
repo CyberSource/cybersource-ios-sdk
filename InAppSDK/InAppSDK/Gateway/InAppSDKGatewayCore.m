@@ -16,6 +16,9 @@
 #import "NSDate+InAppSDKUtils.h"
 #import "InAppSDKInternal.h"
 #import "InAppSDKMerchant.h"
+#import "InAppSDKStringValidator.h"
+#import "InAppSDKCardFieldsValidator.h"
+#import "InAppSDKCardData.h"
 
 
 
@@ -74,8 +77,8 @@
 - (BOOL) verifyTransactionObject:(InAppSDKTransactionObject *)paramTransaction withDelegate:(id<InAppSDKGatewayDelegate>)paramDelegate
 {
     BOOL result = YES;
-    if ((paramTransaction == nil) ||
-        (paramDelegate == nil))
+    
+    if ((paramTransaction == nil) || (paramDelegate == nil))
     {
         result = NO;
     }
@@ -83,7 +86,11 @@
     {
         if ([paramTransaction.merchant.merchantID length] == 0 ||
             [paramTransaction.merchant.passwordDigest length] == 0 ||
-            [paramTransaction.merchant.userName length] == 0 )
+            ![InAppSDKCardFieldsValidator validateCardWithLuhnAlgorithm:paramTransaction.cardData.accountNumber] ||
+            ![InAppSDKCardFieldsValidator validateExpirationDateWithMonthString:paramTransaction.cardData.expirationMonth andYearString:paramTransaction.cardData.expirationYear] ||
+            ![InAppSDKCardFieldsValidator validateSecurityCodeWithString:paramTransaction.cardData.cvNumber]
+            )
+
         {
             result = NO;
         }
@@ -136,7 +143,6 @@
                     InAppSDKEncryptedPayment * encryptedPaymentData = [[InAppSDKEncryptedPayment alloc]init];
                     encryptedPaymentData.data = response.nodeReplayMessage.encrypted_payment_data;
                     gatewayResponse.encryptedPayment = encryptedPaymentData;
-                    
                     gatewayResponse.rmsg = response.nodeReplayMessage.encrypt_payment_data_rmsg;
                 }
                 else if ([response.nodeReplayMessage.decision isEqualToString:kCybsResponseNodeError])
@@ -160,6 +166,10 @@
                     paymentError = [InAppSDKCybsApiError createFromResponse:response];
                 }
                 
+                //Generic
+                gatewayResponse.resultCode = response.nodeReplayMessage.reasonCode;
+                gatewayResponse.requestId = response.nodeReplayMessage.requestID;
+
             }
             else
             {

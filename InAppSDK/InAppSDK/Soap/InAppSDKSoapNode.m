@@ -13,6 +13,7 @@
 #import "InAppSDKCardData.h"
 #import "InAppSDKInternal.h"
 #import "InAppSDKMerchant.h"
+#import "InAppSDKAddress.h"
 
 @implementation InAppSDKSoapNode
 
@@ -126,6 +127,44 @@
 
 #pragma mark - CyberSource common node
 
++ (InAppSDKSoapStructure *) createBillToWithAddress:(InAppSDKAddress *)anAddress
+{
+    
+    if (!anAddress)
+    {
+        return nil;
+    }
+    
+    InAppSDKSoapStructure * billTo = [InAppSDKSoapStructure createElementWithName:@"billTo"
+                                                              withNamespace:[InAppSDKSoapNamespace transactionNamespace]];
+    
+    if ([anAddress.firstName length])
+    {
+        [billTo addChild:[InAppSDKSoapStructure createElementWithName:@"firstName"
+                                                         withValue:anAddress.firstName
+                                                     withNamespace:[InAppSDKSoapNamespace transactionNamespace]]];
+    }
+    
+    if ([anAddress.lastName length])
+    {
+        [billTo addChild:[InAppSDKSoapStructure createElementWithName:@"lastName"
+                                                         withValue:anAddress.lastName
+                                                     withNamespace:[InAppSDKSoapNamespace transactionNamespace]]];
+    }
+    
+    
+    if ([anAddress.postalCode length])
+    {
+        [billTo addChild:[InAppSDKSoapStructure createElementWithName:@"postalCode"
+                                                         withValue:anAddress.postalCode
+                                                     withNamespace:[InAppSDKSoapNamespace transactionNamespace]]];
+    }
+    
+    
+    return billTo;
+    
+}
+
 + (InAppSDKSoapStructure *) createCardWithCard:(InAppSDKCardData*)paramCard
 {
     
@@ -211,6 +250,9 @@
     {
         return nil;
     }
+    // Add billTo if available.
+    if (aTransaction.billTo)
+        [requestMessage addChild:[InAppSDKSoapNode createBillToWithAddress:aTransaction.billTo]];
     
     // add card data
     [requestMessage addChild:[InAppSDKSoapNode createCardWithCard:aTransaction.cardData]];

@@ -21,7 +21,6 @@
 //Credentials
 
 static NSString* kInAppTestMerchantID = @"cybs_lg_sa_merchant";
-static NSString* kInAppTestUserName = @"cybs_lg_sa_merchant";
 
 static NSString* kInAppTestTransactionSecretKey = @"HQAE00u9hQCocLGqDKCBuiZ5WkaI26GEtGWvFyNuJuxYztZ42DKkVkaccxziYrt2087JfCYhbfDU4ek09qJFX1lwrnOtGtMgq08SiUn35aNeXb5kwVU+c+6ZfPs+z4/M66j2fbJJ9toU6AplkkPmeVfEq9X0I0Vn/87NvyFS9iHLMOUMB+l/axa7xanLhx9LXh4USXklRV1zZHgowHD0NaXcYgvl+3pxJVSggFN3y0o8K7ktEMY3hT/poZvASEiUL5q2rYnuFDRVsqphe1BiZ8GsmCB1rDauCtquxad6hzPqBxeTIXl4qJ3mrllSN/5IgdiATmKAVRaYYmr9wvWvUA==";
 
@@ -57,11 +56,22 @@ static NSString* kCYBSLocalENVTransactionSecretKey = @"XuPPGtXb8eq7Gi0SB57QfYRG9
     return testCardData;
 }
 
+-(InAppSDKCardData*) getInValidCardData
+{
+    InAppSDKCardData* testCardData = [[InAppSDKCardData alloc] init];
+    
+    testCardData.accountNumber = @"41111111111";
+    testCardData.expirationMonth = @"12";
+    testCardData.expirationYear = @"2018";
+    [testCardData setCvNumber:@"123"];
+    
+    return testCardData;
+}
+
 -(InAppSDKMerchant*) getMerchantData
 {
     InAppSDKMerchant *merchantData = [[InAppSDKMerchant alloc] init];
     
-    merchantData.userName = kInAppTestUserName;
     merchantData.merchantID = kInAppTestMerchantID;
     merchantData.merchantReferenceCode = kInAppTestMerchantReferenceNumber;
     
@@ -117,6 +127,8 @@ static NSString* kCYBSLocalENVTransactionSecretKey = @"XuPPGtXb8eq7Gi0SB57QfYRG9
 
 - (void)testPerformPaymentDataEncryption
 {
+    BOOL result = NO;
+    
     //Initialize the InAppSDK for CYBS Gateway Environtment.
     [InAppSDKSettings sharedInstance].inAppSDKEnvironment = INAPPSDK_ENV_TEST;
     
@@ -133,11 +145,39 @@ static NSString* kCYBSLocalENVTransactionSecretKey = @"XuPPGtXb8eq7Gi0SB57QfYRG9
     
     InAppSDKGateway * gateway = [InAppSDKGateway sharedInstance];
 
-    [gateway performPaymentDataEncryption:transactionObject withDelegate:self];
+    result = [gateway performPaymentDataEncryption:transactionObject withDelegate:self];
+
+    NSLog(@"Result = %d", result);
     
     [self waitForExpectationsWithTimeout:5.0 handler:nil];
 }
 
+- (void)testPerformPaymentDataEncryptionWithInvalidCardData
+{
+    BOOL result = NO;
+    
+    //Initialize the InAppSDK for CYBS Gateway Environtment.
+    [InAppSDKSettings sharedInstance].inAppSDKEnvironment = INAPPSDK_ENV_TEST;
+    
+    //Intialize the transaction object which collects all the required information for the encryt service.
+    InAppSDKTransactionObject * transactionObject = [[InAppSDKTransactionObject alloc] init];
+    
+    //Set the Merchant specific credentails. Refer getMerchantData
+    transactionObject.merchant = [self getMerchantData];
+    
+    //Set the Card specific details. Refer getKeyedInTestCardData
+    transactionObject.cardData = [self getInValidCardData];
+    
+    self.didPaymentDataEncryptionSucceededExpectation = [self expectationWithDescription:@"Encrypt Payment Data"];
+    
+    InAppSDKGateway * gateway = [InAppSDKGateway sharedInstance];
+    
+    result = [gateway performPaymentDataEncryption:transactionObject withDelegate:self];
+    
+    NSLog(@"Result = %d", result);
+    
+    [self waitForExpectationsWithTimeout:5.0 handler:nil];
+}
 
 - (void)testPerformPaymentDataEncryptionforLocalENV
 {
@@ -173,8 +213,9 @@ static NSString* kCYBSLocalENVTransactionSecretKey = @"XuPPGtXb8eq7Gi0SB57QfYRG9
         
         if (paramResponseData)
         {
-            [statusMsg appendString: @"\nEncrypt Payment Data Service Response:"];
-            [statusMsg appendFormat: @"\n  * Accepted: %@", paramResponseData.isAccepted ? @"Yes" : @"No"];
+            [statusMsg appendString:@"\nEncrypt Payment Data Service Response:"];
+            [statusMsg appendFormat:@"\nAccepted: %@", paramResponseData.isAccepted ? @"Yes" : @"No"];
+            [statusMsg appendFormat:@"\nEncrypted Payment Data:%@", paramResponseData.encryptedPayment.data];
         }
         if (paramError)
         {

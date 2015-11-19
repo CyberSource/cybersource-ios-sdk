@@ -39,8 +39,18 @@ __strong static InAppSDKGateway * _sharedInstance = nil;
 
 -(BOOL) performPaymentDataEncryption:(InAppSDKTransactionObject *)aTransactoinObject withDelegate:(id<InAppSDKGatewayDelegate>)aDelegate
 {
-    
+    if (aTransactoinObject == nil ||
+        aTransactoinObject.cardData == nil ||
+        aTransactoinObject.merchant == nil ||
+        /*aTransactoinObject.billTo == nil || - Optional */
+        aDelegate == nil)
+    {
+        return NO;
+    }
+    else
+    {
     return [[InAppSDKGatewayCore sharedInstance] performPaymentDataEncryption:aTransactoinObject withDelegate:aDelegate];
+    }
 }
 
 @end

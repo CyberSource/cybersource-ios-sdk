@@ -13,6 +13,9 @@
 static NSString * const kInAppSDKSettingsKey = @"InAppSDKSettingsKey";
 
 @implementation InAppSDKSettings
+{
+    NSString * preferredURL;
+}
 
 + (InAppSDKSettings *) sharedInstance
 {
@@ -38,9 +41,19 @@ static NSString * const kInAppSDKSettingsKey = @"InAppSDKSettingsKey";
     if (self)
     {
         _inAppSDKEnvironment = INAPPSDK_ENV_TEST;
+        preferredURL = nil;
+        _timeOut = 110;
         
     }
     return self;
+}
+
+-(void)setServerURL:(NSString *) serverURL
+{
+    if (serverURL != nil)
+    {
+        preferredURL = serverURL;
+    }
 }
 
 - (BOOL) saveSettings
@@ -80,51 +93,58 @@ static NSString * const kInAppSDKSettingsKey = @"InAppSDKSettingsKey";
 {
     NSString * returnURL = nil;
     
-    if(_inAppSDKEnvironment == INAPPSDK_ENV_LIVE)
+    if ([preferredURL length])
     {
-        switch (endPointType)
-        {
-            case CYBS_AUTH_API_EP:
-                returnURL = @"https://auth.ic3.com/apiauth/v1/oauth/";
-                break;
-            case CYBS_SEARCH_API_EP:
-                returnURL = @"https://mobile.ic3.com/payment";
-                break;
-            case CYBS_REQUEST_API_EP:
-                returnURL = @"https://mobile.ic3.com/mpos/transactionProcessor/";
-                break;
-            case CYBS_HELP_API_EP:
-                returnURL = @"https://www.authorize.net/support/iosuserguide.pdf";
-                break;
-            case CYBS_FORGET_PASSWORD_API_EP:
-                returnURL = @"https://ebc.cybersource.com/ebc/login/ForgotPassword.do";
-                break;
-            default:
-                break;
-        }
-        
+        return returnURL = preferredURL;
     }
-    else if( _inAppSDKEnvironment == INAPPSDK_ENV_TEST)
+    else
     {
-        switch (endPointType)
+        if(_inAppSDKEnvironment == INAPPSDK_ENV_LIVE)
         {
-            case CYBS_AUTH_API_EP:
-                returnURL = @"https://authtest.ic3.com/apiauth/v1/oauth/";
-                break;
-            case CYBS_SEARCH_API_EP:
-                returnURL = @"https://mobiletest.ic3.com/payment";
-                break;
-            case CYBS_REQUEST_API_EP:
-                returnURL = @"https://mobiletest.ic3.com/mpos/transactionProcessor/";
-                break;
-            case CYBS_HELP_API_EP:
-                returnURL = @"https://www.authorize.net/support/iosuserguide.pdf";
-                break;
-            case CYBS_FORGET_PASSWORD_API_EP:
-                returnURL = @"https://ebc.cybersource.com/ebc/login/ForgotPassword.do";
-                break;
-            default:
-                break;
+            switch (endPointType)
+            {
+                case CYBS_AUTH_API_EP:
+                    returnURL = @"https://auth.ic3.com/apiauth/v1/oauth/";
+                    break;
+                case CYBS_SEARCH_API_EP:
+                    returnURL = @"https://mobile.ic3.com/payment";
+                    break;
+                case CYBS_REQUEST_API_EP:
+                    returnURL = @"https://mobile.ic3.com/mpos/transactionProcessor/";
+                    break;
+                case CYBS_HELP_API_EP:
+                    returnURL = @"https://www.authorize.net/support/iosuserguide.pdf";
+                    break;
+                case CYBS_FORGET_PASSWORD_API_EP:
+                    returnURL = @"https://ebc.cybersource.com/ebc/login/ForgotPassword.do";
+                    break;
+                default:
+                    break;
+            }
+            
+        }
+        else if( _inAppSDKEnvironment == INAPPSDK_ENV_TEST)
+        {
+            switch (endPointType)
+            {
+                case CYBS_AUTH_API_EP:
+                    returnURL = @"https://authtest.ic3.com/apiauth/v1/oauth/";
+                    break;
+                case CYBS_SEARCH_API_EP:
+                    returnURL = @"https://mobiletest.ic3.com/payment";
+                    break;
+                case CYBS_REQUEST_API_EP:
+                    returnURL = @"https://mobiletest.ic3.com/mpos/transactionProcessor/";
+                    break;
+                case CYBS_HELP_API_EP:
+                    returnURL = @"https://www.authorize.net/support/iosuserguide.pdf";
+                    break;
+                case CYBS_FORGET_PASSWORD_API_EP:
+                    returnURL = @"https://ebc.cybersource.com/ebc/login/ForgotPassword.do";
+                    break;
+                default:
+                    break;
+            }
         }
     }
     

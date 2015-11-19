@@ -21,6 +21,12 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		4B0C9B441BFBBEE600772332 /* InAppSDKStringValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B0C9B421BFBBEE600772332 /* InAppSDKStringValidator.h */; };
+		4B0C9B451BFBBEE600772332 /* InAppSDKStringValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0C9B431BFBBEE600772332 /* InAppSDKStringValidator.m */; };
+		4B0C9B481BFBBF2B00772332 /* InAppSDKCardFieldsValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B0C9B461BFBBF2B00772332 /* InAppSDKCardFieldsValidator.h */; };
+		4B0C9B491BFBBF2B00772332 /* InAppSDKCardFieldsValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0C9B471BFBBF2B00772332 /* InAppSDKCardFieldsValidator.m */; };
+		4B0C9B4C1BFCF15400772332 /* InAppSDKAddress.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B0C9B4A1BFCF15400772332 /* InAppSDKAddress.h */; };
+		4B0C9B4D1BFCF15400772332 /* InAppSDKAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0C9B4B1BFCF15400772332 /* InAppSDKAddress.m */; };
 		4B644C921BD6DCB000C88094 /* InAppSDKKeyChainStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B644C901BD6DCB000C88094 /* InAppSDKKeyChainStore.h */; };
 		4B644C931BD6DCB000C88094 /* InAppSDKKeyChainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B644C911BD6DCB000C88094 /* InAppSDKKeyChainStore.m */; };
 		4B644C961BD6DCFC00C88094 /* InAppSDKError.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B644C941BD6DCFC00C88094 /* InAppSDKError.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -100,6 +106,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4B0C9B421BFBBEE600772332 /* InAppSDKStringValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InAppSDKStringValidator.h; path = Utils/InAppSDKStringValidator.h; sourceTree = "<group>"; };
+		4B0C9B431BFBBEE600772332 /* InAppSDKStringValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InAppSDKStringValidator.m; path = Utils/InAppSDKStringValidator.m; sourceTree = "<group>"; };
+		4B0C9B461BFBBF2B00772332 /* InAppSDKCardFieldsValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InAppSDKCardFieldsValidator.h; path = Utils/InAppSDKCardFieldsValidator.h; sourceTree = "<group>"; };
+		4B0C9B471BFBBF2B00772332 /* InAppSDKCardFieldsValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InAppSDKCardFieldsValidator.m; path = Utils/InAppSDKCardFieldsValidator.m; sourceTree = "<group>"; };
+		4B0C9B4A1BFCF15400772332 /* InAppSDKAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InAppSDKAddress.h; path = Card/InAppSDKAddress.h; sourceTree = "<group>"; };
+		4B0C9B4B1BFCF15400772332 /* InAppSDKAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InAppSDKAddress.m; path = Card/InAppSDKAddress.m; sourceTree = "<group>"; };
 		4B644C901BD6DCB000C88094 /* InAppSDKKeyChainStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InAppSDKKeyChainStore.h; path = KeyChainStore/InAppSDKKeyChainStore.h; sourceTree = "<group>"; };
 		4B644C911BD6DCB000C88094 /* InAppSDKKeyChainStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InAppSDKKeyChainStore.m; path = KeyChainStore/InAppSDKKeyChainStore.m; sourceTree = "<group>"; };
 		4B644C941BD6DCFC00C88094 /* InAppSDKError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InAppSDKError.h; path = Error/InAppSDKError.h; sourceTree = "<group>"; };
@@ -244,6 +256,8 @@
 		4B644C881BD6D97400C88094 /* Card */ = {
 			isa = PBXGroup;
 			children = (
+				4B0C9B4A1BFCF15400772332 /* InAppSDKAddress.h */,
+				4B0C9B4B1BFCF15400772332 /* InAppSDKAddress.m */,
 				4B644CA01BD6DDB000C88094 /* InAppSDKCardData.h */,
 				4B644CA11BD6DDB000C88094 /* InAppSDKCardData.m */,
 			);
@@ -330,6 +344,10 @@
 		4B644C8F1BD6DBEA00C88094 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				4B0C9B461BFBBF2B00772332 /* InAppSDKCardFieldsValidator.h */,
+				4B0C9B471BFBBF2B00772332 /* InAppSDKCardFieldsValidator.m */,
+				4B0C9B421BFBBEE600772332 /* InAppSDKStringValidator.h */,
+				4B0C9B431BFBBEE600772332 /* InAppSDKStringValidator.m */,
 				4B644C981BD6DD3C00C88094 /* NSDate+InAppSDKUtils.h */,
 				4B644C991BD6DD3C00C88094 /* NSDate+InAppSDKUtils.m */,
 			);
@@ -428,11 +446,14 @@
 				4B644CC41BD6DE6F00C88094 /* InAppSDKHttpConnectionError.h in Headers */,
 				4B644CE61BD6DF4B00C88094 /* InAppSDKCybsResponseNodeDetail.h in Headers */,
 				4B644D0C1BD6DFCC00C88094 /* InAppSDKInternal.h in Headers */,
+				4B0C9B441BFBBEE600772332 /* InAppSDKStringValidator.h in Headers */,
 				4B644C9A1BD6DD3C00C88094 /* NSDate+InAppSDKUtils.h in Headers */,
 				4B644C921BD6DCB000C88094 /* InAppSDKKeyChainStore.h in Headers */,
+				4B0C9B4C1BFCF15400772332 /* InAppSDKAddress.h in Headers */,
 				4B644CCE1BD6DEBD00C88094 /* InAppSDKCybsApiError.h in Headers */,
 				4B644CE21BD6DF4B00C88094 /* InAppSDKCybsResponseNode.h in Headers */,
 				4B644CB61BD6DE0C00C88094 /* InAppSDKSoapNamespace.h in Headers */,
+				4B0C9B481BFBBF2B00772332 /* InAppSDKCardFieldsValidator.h in Headers */,
 				4B644CE41BD6DF4B00C88094 /* InAppSDKCybsResponseNodeBody.h in Headers */,
 				4BE4D9DC1BCEB9EF00C44F74 /* InAppSDK-Prefix.pch in Headers */,
 				4B644D151BD6E01F00C88094 /* InAppSDKSettingsPrivate.h in Headers */,
@@ -575,6 +596,7 @@
 				4B644C931BD6DCB000C88094 /* InAppSDKKeyChainStore.m in Sources */,
 				4B644CE51BD6DF4B00C88094 /* InAppSDKCybsResponseNodeBody.m in Sources */,
 				4B644CF11BD6DF4B00C88094 /* InAppSDKCybsResponseNodeReplyMessage.m in Sources */,
+				4B0C9B4D1BFCF15400772332 /* InAppSDKAddress.m in Sources */,
 				4B644CE71BD6DF4B00C88094 /* InAppSDKCybsResponseNodeDetail.m in Sources */,
 				4B644CD11BD6DEBD00C88094 /* InAppSDKCybsServiceAPIs.m in Sources */,
 				4B644D0B1BD6DFCC00C88094 /* InAppSDKGatewayResponse.m in Sources */,
@@ -586,6 +608,8 @@
 				4B644CC71BD6DE6F00C88094 /* InAppSDKRequestInfo.m in Sources */,
 				4B644CCF1BD6DEBD00C88094 /* InAppSDKCybsApiError.m in Sources */,
 				4B644C9F1BD6DD5D00C88094 /* InAppSDKMerchant.m in Sources */,
+				4B0C9B491BFBBF2B00772332 /* InAppSDKCardFieldsValidator.m in Sources */,
+				4B0C9B451BFBBEE600772332 /* InAppSDKStringValidator.m in Sources */,
 				4B644CE31BD6DF4B00C88094 /* InAppSDKCybsResponseNode.m in Sources */,
 				4B644D061BD6DFCC00C88094 /* InAppSDKGatewayCore.m in Sources */,
 				4B644D0F1BD6DFCC00C88094 /* InAppSDKTransactionObject.m in Sources */,

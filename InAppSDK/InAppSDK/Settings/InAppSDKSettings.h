@@ -31,6 +31,12 @@ typedef enum InAppSDKEnvironment
  */
 + (InAppSDKSettings *) sharedInstance;
 
+//! Set Server URL which would take precedence over the SDK provided server URL.
+-(void)setServerURL:(NSString *) serverURL;
+
+//! Timeout Interval in secs.
+@property (nonatomic, assign) float timeOut;
+
 //! Save settings to keychain
 /*!
  Save settings to keychain
