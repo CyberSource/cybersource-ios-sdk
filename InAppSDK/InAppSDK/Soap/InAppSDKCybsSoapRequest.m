@@ -12,7 +12,7 @@
 #import "InAppSDKSettingsPrivate.h"
 
 
-const static float kInAppSDKCybsApiSoapTimeoutInterval = 30.0;
+const static float kInAppSDKCybsApiSoapTimeoutInterval = 110.0;
 
 @implementation InAppSDKCybsSoapRequest
 
@@ -23,7 +23,15 @@ const static float kInAppSDKCybsApiSoapTimeoutInterval = 30.0;
     
     InAppSDKCybsSoapRequest * newRequest = [InAppSDKCybsSoapRequest requestWithURL:[NSURL URLWithString:requestURLString]];
     [newRequest setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
-    [newRequest setTimeoutInterval:kInAppSDKCybsApiSoapTimeoutInterval];
+    
+    if ([InAppSDKSettings sharedInstance].timeOut > 0.0 )
+    {
+        [newRequest setTimeoutInterval:[InAppSDKSettings sharedInstance].timeOut];
+    }
+    else
+    {
+        [newRequest setTimeoutInterval:kInAppSDKCybsApiSoapTimeoutInterval];
+    }
     
     // prepare message
     NSString * soapXMLMessage = [InAppSDKCybsSoapRequest createSoapXmlMessageWithRequestMessage:aRequestMessage];
@@ -59,7 +67,11 @@ const static float kInAppSDKCybsApiSoapTimeoutInterval = 30.0;
     // add envelop to message
     soapXMLMessage = [soapXMLMessage stringByAppendingString:[messageEnvelop generateSoapXmlStructure]];
     
-    NSLog(@"REQUEST XML: %@", soapXMLMessage);
+    if ([InAppSDKSettings sharedInstance].enableLog)
+    {
+       NSLog(@"\nREQUEST XML:\n %@", soapXMLMessage);
+    }
+
     
     return soapXMLMessage;
 }

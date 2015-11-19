@@ -43,6 +43,7 @@ static NSString * const kInAppSDKSettingsKey = @"InAppSDKSettingsKey";
         _inAppSDKEnvironment = INAPPSDK_ENV_TEST;
         preferredURL = nil;
         _timeOut = 110;
+        _enableLog = FALSE;
         
     }
     return self;

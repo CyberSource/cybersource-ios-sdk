@@ -34,8 +34,11 @@ typedef enum InAppSDKEnvironment
 //! Set Server URL which would take precedence over the SDK provided server URL.
 -(void)setServerURL:(NSString *) serverURL;
 
-//! Timeout Interval in secs.
-@property (nonatomic, assign) float timeOut;
+//! Timeout Interval in secs. Default 110.
+@property (nonatomic, assign) NSTimeInterval timeOut;
+
+//! Turn ON / OFF very basic Request and Response Logging for trouble shooting. Default OFF.
+@property (nonatomic, assign) BOOL enableLog;
 
 //! Save settings to keychain
 /*!

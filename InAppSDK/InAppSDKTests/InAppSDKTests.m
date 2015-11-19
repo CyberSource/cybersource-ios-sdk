@@ -17,6 +17,7 @@
 #import "InAppSDKSettings.h"
 #import "InAppSDKGatewayError.h"
 #import "InAppSDKSignatureGenerator.h"
+#import "InAppSDKAddress.h"
 
 //Credentials
 
@@ -43,6 +44,16 @@ static NSString* kCYBSLocalENVTransactionSecretKey = @"XuPPGtXb8eq7Gi0SB57QfYRG9
 @end
 
 @implementation InAppSDKTests
+
+-(InAppSDKAddress *) getBillToData
+{
+    InAppSDKAddress * billToInfo = [[InAppSDKAddress alloc] init];
+    billToInfo.firstName = @"TestFirstName";
+    billToInfo.lastName = @"TestLastName";
+    billToInfo.postalCode = @"98004";
+    
+    return billToInfo;
+}
 
 -(InAppSDKCardData*) getTestCardData
 {
@@ -129,11 +140,20 @@ static NSString* kCYBSLocalENVTransactionSecretKey = @"XuPPGtXb8eq7Gi0SB57QfYRG9
 {
     BOOL result = NO;
     
+    //Basic Request and Response logging to be enabled or disabled. Default Disabled.
+    [InAppSDKSettings sharedInstance].enableLog = FALSE;
+    
+    //Setting the connection Timeout. Default 110.
+    [InAppSDKSettings sharedInstance].timeOut = 45.0;
+    
     //Initialize the InAppSDK for CYBS Gateway Environtment.
     [InAppSDKSettings sharedInstance].inAppSDKEnvironment = INAPPSDK_ENV_TEST;
     
     //Intialize the transaction object which collects all the required information for the encryt service.
     InAppSDKTransactionObject * transactionObject = [[InAppSDKTransactionObject alloc] init];
+    
+    //Set First Name, Last Name and Postal Code. These are optional Values, not mandatory.
+    transactionObject.billTo = [self getBillToData];
     
     //Set the Merchant specific credentails. Refer getMerchantData
     transactionObject.merchant = [self getMerchantData];
@@ -145,9 +165,10 @@ static NSString* kCYBSLocalENVTransactionSecretKey = @"XuPPGtXb8eq7Gi0SB57QfYRG9
     
     InAppSDKGateway * gateway = [InAppSDKGateway sharedInstance];
 
+    // If the result is success, the request is accepted. Failure means some input values may be not a valid ones.
     result = [gateway performPaymentDataEncryption:transactionObject withDelegate:self];
 
-    NSLog(@"Result = %d", result);
+    //NSLog(@"Result = %d", result);
     
     [self waitForExpectationsWithTimeout:5.0 handler:nil];
 }
@@ -215,6 +236,8 @@ static NSString* kCYBSLocalENVTransactionSecretKey = @"XuPPGtXb8eq7Gi0SB57QfYRG9
         {
             [statusMsg appendString:@"\nEncrypt Payment Data Service Response:"];
             [statusMsg appendFormat:@"\nAccepted: %@", paramResponseData.isAccepted ? @"Yes" : @"No"];
+            [statusMsg appendFormat:@"\nRequestID %@", paramResponseData.requestId];
+            [statusMsg appendFormat:@"\nResultCode %@", paramResponseData.resultCode];
             [statusMsg appendFormat:@"\nEncrypted Payment Data:%@", paramResponseData.encryptedPayment.data];
         }
         if (paramError)

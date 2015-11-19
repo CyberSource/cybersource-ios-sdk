@@ -9,6 +9,7 @@
 #import "InAppSDKConnection.h"
 #import "InAppSDKRequestInfo.h"
 #import "InAppSDKHttpConnectionError.h"
+#import "InAppSDKSettings.h"
 
 @interface InAppSDKConnection()
 
@@ -107,8 +108,12 @@ const int kInAppSDKResponseStatusCodeOk = 200;
 - (void) connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
     [self.responseData appendData:data];
-    NSLog(@"Response Data: %@", [[NSString alloc] initWithData:data
+    if ([InAppSDKSettings sharedInstance].enableLog)
+    {
+        
+        NSLog(@"\nRESPONSE DATA:\n%@", [[NSString alloc] initWithData:data
                                                       encoding:NSUTF8StringEncoding]);
+    }
  }
 
 - (void) connectionDidFinishLoading:(NSURLConnection *)connection
