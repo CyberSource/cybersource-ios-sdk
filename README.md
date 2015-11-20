@@ -15,6 +15,10 @@ After including the frameworks and the path now try to include the following fra
 ```
 
 ```objc
+-(void) performPaymentDataEncryption
+{
+ BOOL result = NO;
+ 
 //Initialize the InAppSDK for CYBS Gateway Environtment.
 [InAppSDKSettings sharedInstance].inAppSDKEnvironment = INAPPSDK_ENV_TEST;
 
@@ -22,6 +26,10 @@ After including the frameworks and the path now try to include the following fra
 //Refer: InAppSDKTransactionObject.h
 InAppSDKTransactionObject * transactionObject = [[InAppSDKTransactionObject alloc] init];
 
+//Set First Name, Last Name and Postal Code. These are optional Values, not mandatory.
+//Refer: InAppSDKAddress.h
+transactionObject.billTo = [self getBillToData];
+    
 //Get and Set the Merchant specific credentials [merchantID, Signature, merchant Reference code etc.] 
 //Refer: InAppSDKMerchant.h
 transactionObject.merchant = [self getMerchantData];
@@ -32,7 +40,19 @@ transactionObject.cardData = [self getTestCardData];
 
 //Initialize the InAppSDK Gateway and call performPaymentDataEncryption and implement the Delegate.
 InAppSDKGateway * gateway = [InAppSDKGateway sharedInstance]; 
-[gateway performPaymentDataEncryption:transactionObject withDelegate:self];
+result = [gatway performPaymentDataEncryption:transactionObject withDelegate:self];
+    
+if (result)
+{
+  NSLog(@"InAppSDK: Request Accepted. Expect the response in the delegate method.");
+}
+else
+{
+  NSLog(@"InAppSDK: Request NOT Accepted. Verify the input values if any one is invalid.");
+}
+}
+
+
 
 //Delegate. Refer InAppSDKGatewayProtocol.h
 - (void) encryptPaymentDataServiceFinishedWithGatewayResponse:(InAppSDKGatewayResponse *)paramResponseData withError:(InAppSDKError *)paramError
@@ -42,12 +62,29 @@ InAppSDKGateway * gateway = [InAppSDKGateway sharedInstance];
     NSMutableString* statusMsg = [NSMutableString new];
     if (paramResponseData) 
     {
-      [statusMsg appendString: @"\n Encrypt Payment Data Service Response:"];
-      [statusMsg appendFormat: @"\n * Accepted: %@", paramResponseData.isAccepted ? @"Yes" : @"No"]; 
-      [statusMsg appendFormat: @"\n * Encrypted Blob: %@", paramResponseData.encryptedPayment.data];
+      [statusMsg appendString:@"\nEncrypt Payment Data Service Response:"];
+      [statusMsg appendFormat:@"\nAccepted: %@", paramResponseData.isAccepted ? @"Yes" : @"No"];
+      [statusMsg appendFormat:@"\nRequestID %@", paramResponseData.requestId];
+      [statusMsg appendFormat:@"\nResultCode %@", paramResponseData.resultCode];
+      [statusMsg appendFormat:@"\nEncrypted Payment Data:%@", paramResponseData.encryptedPayment.data];
     }
+    if (paramError)
+    {
+      [statusMsg appendFormat:@"\nError: %@", paramError.localizedDescription];
+    }
+
     NSLog(@"%@", statusMsg);
   } 
+}
+
+-(InAppSDKAddress *) getBillToData
+{
+    InAppSDKAddress * billToInfo = [[InAppSDKAddress alloc] init];
+    billToInfo.firstName = @"TestFirstName";
+    billToInfo.lastName = @"TestLastName";
+    billToInfo.postalCode = @"98004";
+    
+    return billToInfo;
 }
 
 -(InAppSDKCardData*) getTestCardData 
