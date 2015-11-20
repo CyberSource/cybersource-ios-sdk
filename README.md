@@ -44,11 +44,11 @@ result = [gatway performPaymentDataEncryption:transactionObject withDelegate:sel
     
 if (result)
 {
-  NSLog(@"InAppSDK: Request Accepted. Expect the response in the delegate method.");
+  NSLog(@"Request is Accepted. Expect the response in the delegate method.");
 }
 else
 {
-  NSLog(@"InAppSDK: Request NOT Accepted. Verify the input values if any one is invalid.");
+  NSLog(@"Request is NOT Accepted. Verify the input values if any one is invalid.");
 }
 }
 
