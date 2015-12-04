@@ -1,4 +1,4 @@
-# Cybersource iOS SDK
+# CyberSource iOS SDK
 
 ##SDK Installation 
 
