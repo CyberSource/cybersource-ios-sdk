@@ -2,6 +2,13 @@
 
 ##SDK Installation 
 
+### Cocoa Pods
+````
+     pod 'cybersource-ios-sdk'  
+````  
+
+### Manual Installation
+
 Include the ```InAppSDK.framework``` in to the application. Select Target, In Embedded Binaries, press the plus (+)
 and select the framework.
 
