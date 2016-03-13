@@ -2,7 +2,7 @@
 
 ##SDK Installation 
 
-### Cocoa Pods
+### CocoaPods
 ````
      pod 'cybersource-ios-sdk'  
 ````  
