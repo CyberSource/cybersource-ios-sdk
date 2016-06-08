@@ -9,6 +9,7 @@
 @class InAppSDKCardData;
 @class InAppSDKMerchant;
 @class InAppSDKAddress;
+@class InAppSDKEncryptedPaymentData;
 
 //!Representation of transaction type
 typedef enum
@@ -23,6 +24,9 @@ typedef enum
 
 //! Contains information about the merchant, @see InAppSDKMerchant
 @property (atomic, strong) InAppSDKMerchant *merchant;
+
+//! Contains information about the encryptedPayment used in making transaction, @see InAppSDKEncryptedPaymentData
+@property (atomic, strong) InAppSDKEncryptedPaymentData *encryptedPaymentData;
 
 //! Contains information about the card used in making transaction, @see InAppSDKCardData
 @property (atomic, strong) InAppSDKCardData *cardData;

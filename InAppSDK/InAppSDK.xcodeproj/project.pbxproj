@@ -93,6 +93,8 @@
 		4BE4D9CB1BCEB8D100C44F74 /* InAppSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BE4D9BF1BCEB8D100C44F74 /* InAppSDK.framework */; };
 		4BE4D9D21BCEB8D100C44F74 /* InAppSDKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE4D9D11BCEB8D100C44F74 /* InAppSDKTests.m */; };
 		4BE4D9DC1BCEB9EF00C44F74 /* InAppSDK-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 4BE4D9DB1BCEB9EF00C44F74 /* InAppSDK-Prefix.pch */; };
+		D7C0CF491D08B57A00B213F3 /* InAppSDKEncryptedPaymentData.h in Headers */ = {isa = PBXBuildFile; fileRef = D7C0CF471D08B57A00B213F3 /* InAppSDKEncryptedPaymentData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D7C0CF4A1D08B57A00B213F3 /* InAppSDKEncryptedPaymentData.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C0CF481D08B57A00B213F3 /* InAppSDKEncryptedPaymentData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -182,6 +184,8 @@
 		4BE4D9D01BCEB8D100C44F74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4BE4D9D11BCEB8D100C44F74 /* InAppSDKTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InAppSDKTests.m; sourceTree = "<group>"; };
 		4BE4D9DB1BCEB9EF00C44F74 /* InAppSDK-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "InAppSDK-Prefix.pch"; sourceTree = "<group>"; };
+		D7C0CF471D08B57A00B213F3 /* InAppSDKEncryptedPaymentData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InAppSDKEncryptedPaymentData.h; path = Card/InAppSDKEncryptedPaymentData.h; sourceTree = "<group>"; };
+		D7C0CF481D08B57A00B213F3 /* InAppSDKEncryptedPaymentData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InAppSDKEncryptedPaymentData.m; path = Card/InAppSDKEncryptedPaymentData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,6 +264,8 @@
 				4B0C9B4B1BFCF15400772332 /* InAppSDKAddress.m */,
 				4B644CA01BD6DDB000C88094 /* InAppSDKCardData.h */,
 				4B644CA11BD6DDB000C88094 /* InAppSDKCardData.m */,
+				D7C0CF471D08B57A00B213F3 /* InAppSDKEncryptedPaymentData.h */,
+				D7C0CF481D08B57A00B213F3 /* InAppSDKEncryptedPaymentData.m */,
 			);
 			name = Card;
 			sourceTree = "<group>";
@@ -434,6 +440,7 @@
 				4B644C9E1BD6DD5D00C88094 /* InAppSDKMerchant.h in Headers */,
 				4B644C961BD6DCFC00C88094 /* InAppSDKError.h in Headers */,
 				4B644D131BD6E01F00C88094 /* InAppSDKSettings.h in Headers */,
+				D7C0CF491D08B57A00B213F3 /* InAppSDKEncryptedPaymentData.h in Headers */,
 				4B644D071BD6DFCC00C88094 /* InAppSDKGatewayError.h in Headers */,
 				4B644D0A1BD6DFCC00C88094 /* InAppSDKGatewayResponse.h in Headers */,
 				4B644D1B1BD6E70E00C88094 /* InAppSDKGateway.h in Headers */,
@@ -609,6 +616,7 @@
 				4B644CCF1BD6DEBD00C88094 /* InAppSDKCybsApiError.m in Sources */,
 				4B644C9F1BD6DD5D00C88094 /* InAppSDKMerchant.m in Sources */,
 				4B0C9B491BFBBF2B00772332 /* InAppSDKCardFieldsValidator.m in Sources */,
+				D7C0CF4A1D08B57A00B213F3 /* InAppSDKEncryptedPaymentData.m in Sources */,
 				4B0C9B451BFBBEE600772332 /* InAppSDKStringValidator.m in Sources */,
 				4B644CE31BD6DF4B00C88094 /* InAppSDKCybsResponseNode.m in Sources */,
 				4B644D061BD6DFCC00C88094 /* InAppSDKGatewayCore.m in Sources */,

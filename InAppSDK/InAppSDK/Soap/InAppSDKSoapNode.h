@@ -10,6 +10,7 @@
 @class InAppSDKSoapStructure;
 @class InAppSDKCardData;
 @class InAppSDKTransactionObject;
+@class InAppSDKEncryptedPaymentData;
 
 
 @interface InAppSDKSoapNode : NSObject
@@ -41,6 +42,13 @@
  @return @see InAppSDKSoapStructure object or \c nil if the parameter does not meet the requirements.
  */
 + (InAppSDKSoapStructure *) createCardWithCard:(InAppSDKCardData*)paramCard;
+
+/*! Creates a structure for the \c encryptedPayment SOAP node.
+ It uses data from \c payment object of @see InAppSDKEncryptedPaymentData
+ \param payment the payment object. It must not be nil.
+ @return @see InAppSDKSoapStructure object or \c nil if the parameter does not meet the requirements.
+ */
++ (InAppSDKSoapStructure *) createEncryptedPaymentWithPayment:(InAppSDKEncryptedPaymentData*) payment;
 
 
 #pragma mark - CyberSource security nodes -

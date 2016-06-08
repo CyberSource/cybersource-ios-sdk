@@ -14,6 +14,7 @@
 #import "InAppSDKInternal.h"
 #import "InAppSDKMerchant.h"
 #import "InAppSDKAddress.h"
+#import "InAppSDKEncryptedPaymentData.h"
 
 @implementation InAppSDKSoapNode
 
@@ -165,6 +166,44 @@
     
 }
 
++ (InAppSDKSoapStructure *) createEncryptedPaymentWithPayment:(InAppSDKEncryptedPaymentData*) payment
+{
+
+  if (payment == nil)
+  {
+    // aCard must not be nil
+    return nil;
+  }
+
+  InAppSDKSoapStructure *paymentElement = [InAppSDKSoapStructure createElementWithName:@"card"
+                                                               withNamespace:[InAppSDKSoapNamespace transactionNamespace]];
+
+  InAppSDKEncryptedPaymentData *keyedInPaymentData = (InAppSDKEncryptedPaymentData *)payment;
+
+  if ([keyedInPaymentData.data length])
+  {
+    [paymentElement addChild:[InAppSDKSoapStructure createElementWithName:@"data"
+                                                      withValue:keyedInPaymentData.data
+                                                  withNamespace:[InAppSDKSoapNamespace transactionNamespace]]];
+  }
+
+  if ([keyedInPaymentData.descriptor length])
+  {
+    [paymentElement addChild:[InAppSDKSoapStructure createElementWithName:@"descriptor"
+                                                      withValue:keyedInPaymentData.descriptor
+                                                  withNamespace:[InAppSDKSoapNamespace transactionNamespace]]];
+  }
+
+  if ([keyedInPaymentData.encoding length])
+  {
+    [paymentElement addChild:[InAppSDKSoapStructure createElementWithName:@"encoding"
+                                                      withValue:keyedInPaymentData.encoding
+                                                  withNamespace:[InAppSDKSoapNamespace transactionNamespace]]];
+  }
+
+  return paymentElement;
+}
+
 + (InAppSDKSoapStructure *) createCardWithCard:(InAppSDKCardData*)paramCard
 {
     
@@ -254,9 +293,13 @@
     if (aTransaction.billTo)
         [requestMessage addChild:[InAppSDKSoapNode createBillToWithAddress:aTransaction.billTo]];
     
-    // add card data
-    [requestMessage addChild:[InAppSDKSoapNode createCardWithCard:aTransaction.cardData]];
-    
+    // add card or encrypted payment data
+    if (aTransaction.encryptedPaymentData) {
+        [requestMessage addChild:[InAppSDKSoapNode createEncryptedPaymentWithPayment:aTransaction.encryptedPaymentData]];
+    } else {
+        [requestMessage addChild:[InAppSDKSoapNode createCardWithCard:aTransaction.cardData]];
+    }
+
     [requestMessage addChild:[InAppSDKSoapNode createEncryptPaymentDataService]];
   
     return requestMessage;
