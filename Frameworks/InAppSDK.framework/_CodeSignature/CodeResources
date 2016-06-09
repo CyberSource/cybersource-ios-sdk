@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/InAppSDK.h</key>
 		<data>
-		subA/Cr1FaXivouKGBc5MDPrCyQ=
+		Hk05oXGzUw3HeKOO3CXBLpQD9t0=
 		</data>
 		<key>Headers/InAppSDKAddress.h</key>
 		<data>
@@ -52,6 +52,10 @@
 		<data>
 		2WIdYGnqDIXfWPrWoewfp4CuNLI=
 		</data>
+		<key>Headers/InAppSDKSignatureGenerator.h</key>
+		<data>
+		wTbdNIKYMeRWdXgLmQwaP4Mu2OA=
+		</data>
 		<key>Headers/InAppSDKTransactionObject.h</key>
 		<data>
 		cRUhU3/Pdd2ek5skUplruV7OZ9Y=
@@ -71,11 +75,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			subA/Cr1FaXivouKGBc5MDPrCyQ=
+			Hk05oXGzUw3HeKOO3CXBLpQD9t0=
 			</data>
 			<key>hash2</key>
 			<data>
-			Em9d4E25or3h5O0rfTyARp4Eg0KCKFoNHQp2yr1O4OM=
+			7oPVdGw3dBtIc6R2gp9SE+EOmSWz+7iBZ5zZDfEqHt0=
 			</data>
 		</dict>
 		<key>Headers/InAppSDKAddress.h</key>
@@ -197,6 +201,17 @@
 			<key>hash2</key>
 			<data>
 			3iPREs3RKzW2dGnLjH4GKASAx7hBkbW29W8hzIX99aA=
+			</data>
+		</dict>
+		<key>Headers/InAppSDKSignatureGenerator.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			wTbdNIKYMeRWdXgLmQwaP4Mu2OA=
+			</data>
+			<key>hash2</key>
+			<data>
+			/DNbS4Uagu/gDw9A1jPcNpEbJqV0TDzkLUmh3U30i1M=
 			</data>
 		</dict>
 		<key>Headers/InAppSDKTransactionObject.h</key>

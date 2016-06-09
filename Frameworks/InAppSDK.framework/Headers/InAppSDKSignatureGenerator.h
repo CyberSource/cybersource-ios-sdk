@@ -14,7 +14,7 @@
 // This part of the code that generates the Signature is present here only to show as the sample.
 // Signature generation should be done at the Merchant Server.
 
--(NSString*) generateSignatureWithMerchantId: (NSString *) merchantId
++(NSString*) generateSignatureWithMerchantId: (NSString *) merchantId
                         transactionSecretKey: (NSString *) transactionSecretKey
                        merchantReferenceCode: (NSString *) merchantReferenceCode;
 @end

@@ -28,3 +28,4 @@ FOUNDATION_EXPORT const unsigned char InAppSDKVersionString[];
 #import <InAppSDK/InAppSDKGatewayError.h>
 #import <InAppSDK/InAppSDKAddress.h>
 #import <InAppSDK/InAppSDKEncryptedPaymentData.h>
+#import <InAppSDK/InAppSDKSignatureGenerator.h>
