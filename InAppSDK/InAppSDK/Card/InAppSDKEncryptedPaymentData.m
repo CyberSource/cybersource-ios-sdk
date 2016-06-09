@@ -16,8 +16,8 @@
   if (self)
   {
     _data = nil;
-    _descriptor = nil;
-    _encoding = nil;
+    _descriptor = @"RklEPUNPTU1PTi5BUFBMRS5JTkFQUC5QQVlNRU5U";
+    _encoding = @"Base64";
   }
 
   return self;
