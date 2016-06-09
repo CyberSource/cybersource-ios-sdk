@@ -171,11 +171,11 @@
 
   if (payment == nil)
   {
-    // aCard must not be nil
+    // payment must not be nil
     return nil;
   }
 
-  InAppSDKSoapStructure *paymentElement = [InAppSDKSoapStructure createElementWithName:@"card"
+  InAppSDKSoapStructure *paymentElement = [InAppSDKSoapStructure createElementWithName:@"encryptedPayment"
                                                                withNamespace:[InAppSDKSoapNamespace transactionNamespace]];
 
   InAppSDKEncryptedPaymentData *keyedInPaymentData = (InAppSDKEncryptedPaymentData *)payment;
