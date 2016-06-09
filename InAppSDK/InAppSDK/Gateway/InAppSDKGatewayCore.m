@@ -19,6 +19,7 @@
 #import "InAppSDKStringValidator.h"
 #import "InAppSDKCardFieldsValidator.h"
 #import "InAppSDKCardData.h"
+#import "InAppSDKEncryptedPaymentValidator.h"
 
 
 
@@ -86,9 +87,10 @@
     {
         if ([paramTransaction.merchant.merchantID length] == 0 ||
             [paramTransaction.merchant.passwordDigest length] == 0 ||
-            ![InAppSDKCardFieldsValidator validateCardWithLuhnAlgorithm:paramTransaction.cardData.accountNumber] ||
-            ![InAppSDKCardFieldsValidator validateExpirationDateWithMonthString:paramTransaction.cardData.expirationMonth andYearString:paramTransaction.cardData.expirationYear] /*||
-            ![InAppSDKCardFieldsValidator validateSecurityCodeWithString:paramTransaction.cardData.cvNumber] */
+             (
+              ![InAppSDKCardFieldsValidator isValidCardData:paramTransaction.cardData] &&
+              ![InAppSDKEncryptedPaymentValidator isValidEncryptedPaymentData:paramTransaction.encryptedPaymentData]
+             )
             )
 
         {

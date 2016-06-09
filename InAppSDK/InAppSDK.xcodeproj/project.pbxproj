@@ -95,6 +95,8 @@
 		4BE4D9DC1BCEB9EF00C44F74 /* InAppSDK-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 4BE4D9DB1BCEB9EF00C44F74 /* InAppSDK-Prefix.pch */; };
 		D7C0CF491D08B57A00B213F3 /* InAppSDKEncryptedPaymentData.h in Headers */ = {isa = PBXBuildFile; fileRef = D7C0CF471D08B57A00B213F3 /* InAppSDKEncryptedPaymentData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D7C0CF4A1D08B57A00B213F3 /* InAppSDKEncryptedPaymentData.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C0CF481D08B57A00B213F3 /* InAppSDKEncryptedPaymentData.m */; };
+		D7C0CF4D1D09BC7400B213F3 /* InAppSDKEncryptedPaymentValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = D7C0CF4B1D09BC7400B213F3 /* InAppSDKEncryptedPaymentValidator.h */; };
+		D7C0CF4E1D09BC7400B213F3 /* InAppSDKEncryptedPaymentValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C0CF4C1D09BC7400B213F3 /* InAppSDKEncryptedPaymentValidator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -186,6 +188,8 @@
 		4BE4D9DB1BCEB9EF00C44F74 /* InAppSDK-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "InAppSDK-Prefix.pch"; sourceTree = "<group>"; };
 		D7C0CF471D08B57A00B213F3 /* InAppSDKEncryptedPaymentData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InAppSDKEncryptedPaymentData.h; path = Card/InAppSDKEncryptedPaymentData.h; sourceTree = "<group>"; };
 		D7C0CF481D08B57A00B213F3 /* InAppSDKEncryptedPaymentData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InAppSDKEncryptedPaymentData.m; path = Card/InAppSDKEncryptedPaymentData.m; sourceTree = "<group>"; };
+		D7C0CF4B1D09BC7400B213F3 /* InAppSDKEncryptedPaymentValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InAppSDKEncryptedPaymentValidator.h; path = Utils/InAppSDKEncryptedPaymentValidator.h; sourceTree = "<group>"; };
+		D7C0CF4C1D09BC7400B213F3 /* InAppSDKEncryptedPaymentValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InAppSDKEncryptedPaymentValidator.m; path = Utils/InAppSDKEncryptedPaymentValidator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -352,6 +356,8 @@
 			children = (
 				4B0C9B461BFBBF2B00772332 /* InAppSDKCardFieldsValidator.h */,
 				4B0C9B471BFBBF2B00772332 /* InAppSDKCardFieldsValidator.m */,
+				D7C0CF4B1D09BC7400B213F3 /* InAppSDKEncryptedPaymentValidator.h */,
+				D7C0CF4C1D09BC7400B213F3 /* InAppSDKEncryptedPaymentValidator.m */,
 				4B0C9B421BFBBEE600772332 /* InAppSDKStringValidator.h */,
 				4B0C9B431BFBBEE600772332 /* InAppSDKStringValidator.m */,
 				4B644C981BD6DD3C00C88094 /* NSDate+InAppSDKUtils.h */,
@@ -455,6 +461,7 @@
 				4B644CE61BD6DF4B00C88094 /* InAppSDKCybsResponseNodeDetail.h in Headers */,
 				4B644D0C1BD6DFCC00C88094 /* InAppSDKInternal.h in Headers */,
 				4B0C9B441BFBBEE600772332 /* InAppSDKStringValidator.h in Headers */,
+				D7C0CF4D1D09BC7400B213F3 /* InAppSDKEncryptedPaymentValidator.h in Headers */,
 				4B644C9A1BD6DD3C00C88094 /* NSDate+InAppSDKUtils.h in Headers */,
 				4B644C921BD6DCB000C88094 /* InAppSDKKeyChainStore.h in Headers */,
 				4B644CCE1BD6DEBD00C88094 /* InAppSDKCybsApiError.h in Headers */,
@@ -617,6 +624,7 @@
 				4B644C9F1BD6DD5D00C88094 /* InAppSDKMerchant.m in Sources */,
 				4B0C9B491BFBBF2B00772332 /* InAppSDKCardFieldsValidator.m in Sources */,
 				D7C0CF4A1D08B57A00B213F3 /* InAppSDKEncryptedPaymentData.m in Sources */,
+				D7C0CF4E1D09BC7400B213F3 /* InAppSDKEncryptedPaymentValidator.m in Sources */,
 				4B0C9B451BFBBEE600772332 /* InAppSDKStringValidator.m in Sources */,
 				4B644CE31BD6DF4B00C88094 /* InAppSDKCybsResponseNode.m in Sources */,
 				4B644D061BD6DFCC00C88094 /* InAppSDKGatewayCore.m in Sources */,
