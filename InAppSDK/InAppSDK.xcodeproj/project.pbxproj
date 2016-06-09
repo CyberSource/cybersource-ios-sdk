@@ -216,9 +216,9 @@
 			isa = PBXGroup;
 			children = (
 				4B644D1A1BD6E70E00C88094 /* InAppSDKGateway.h */,
+				4B644CF51BD6DFCC00C88094 /* InAppSDKGateway.m */,
 				4B644CF21BD6DFCC00C88094 /* InAppSDKEncryptedPayment.h */,
 				4B644CF31BD6DFCC00C88094 /* InAppSDKEncryptedPayment.m */,
-				4B644CF51BD6DFCC00C88094 /* InAppSDKGateway.m */,
 				4B644CF61BD6DFCC00C88094 /* InAppSDKGatewayCore.h */,
 				4B644CF71BD6DFCC00C88094 /* InAppSDKGatewayCore.m */,
 				4B644CF81BD6DFCC00C88094 /* InAppSDKGatewayError.h */,
