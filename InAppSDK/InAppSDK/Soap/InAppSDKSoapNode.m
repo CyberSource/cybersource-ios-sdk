@@ -316,7 +316,7 @@
 + (InAppSDKSoapStructure *) createEncryptPaymentDataService
 {
     
-    InAppSDKSoapStructure * authorizationService = [InAppSDKSoapStructure createElementWithName:@"encryptPaymentDataService"
+    InAppSDKSoapStructure * authorizationService = [InAppSDKSoapStructure createElementWithName:@"ccAuthService"
                                                                             withNamespace:[InAppSDKSoapNamespace transactionNamespace]];
     
     [authorizationService addParameter:[InAppSDKSoapNode createRunTrueParameter]];
