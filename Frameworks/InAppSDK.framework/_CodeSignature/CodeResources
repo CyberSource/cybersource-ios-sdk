@@ -10,7 +10,7 @@
 		</data>
 		<key>Headers/InAppSDKAddress.h</key>
 		<data>
-		QcFS6bx94xRDLC9kpcx6RHD4VK0=
+		cF18SEutYdPVc4sjEC+e8r3HXbk=
 		</data>
 		<key>Headers/InAppSDKCardData.h</key>
 		<data>
@@ -30,7 +30,7 @@
 		</data>
 		<key>Headers/InAppSDKGateway.h</key>
 		<data>
-		EG5auiBtwIHxdUXlzGpIswRlu7E=
+		QMKMt+Gw9mDFPCLWSvAtgrSF9Zw=
 		</data>
 		<key>Headers/InAppSDKGatewayError.h</key>
 		<data>
@@ -58,7 +58,7 @@
 		</data>
 		<key>Headers/InAppSDKTransactionObject.h</key>
 		<data>
-		cRUhU3/Pdd2ek5skUplruV7OZ9Y=
+		qVrYQ4lh32AbJWDWUkTgs21i+9U=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -86,11 +86,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			QcFS6bx94xRDLC9kpcx6RHD4VK0=
+			cF18SEutYdPVc4sjEC+e8r3HXbk=
 			</data>
 			<key>hash2</key>
 			<data>
-			ZGOjeF6lqcW0NvbhU3PK7ZF5mJ/JvNjy39nMPfe8Nzg=
+			fcGYUmk5EdsAs92ruvC9w2k1ePpjugsYrHvB839Ie9Q=
 			</data>
 		</dict>
 		<key>Headers/InAppSDKCardData.h</key>
@@ -141,11 +141,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			EG5auiBtwIHxdUXlzGpIswRlu7E=
+			QMKMt+Gw9mDFPCLWSvAtgrSF9Zw=
 			</data>
 			<key>hash2</key>
 			<data>
-			cccen5647PeCO8pyEsvyxN4BJNJkrytwgIJK9wMqhgA=
+			ZMoKYPhxfZ9GtvRmv3VJ/mhhDFlGv2r0R5gZaF7lkjE=
 			</data>
 		</dict>
 		<key>Headers/InAppSDKGatewayError.h</key>
@@ -218,11 +218,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			cRUhU3/Pdd2ek5skUplruV7OZ9Y=
+			qVrYQ4lh32AbJWDWUkTgs21i+9U=
 			</data>
 			<key>hash2</key>
 			<data>
-			o88hrDVTnidBrZtMdT23pLP40u7YOV4hSEXgHje+N9w=
+			gwKVlZJxbzvQb9QLilMpvZPu3e5/Mo9nCL5B3McUBF0=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

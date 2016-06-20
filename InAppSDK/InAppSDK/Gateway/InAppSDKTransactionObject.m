@@ -21,6 +21,7 @@
         _cardData = nil;
         _billTo = nil;
         _encryptedPaymentData = nil;
+        _totalAmount = nil;
     }
     return self;
 }
@@ -48,6 +49,11 @@
     if (self.billTo)
     {
         copiedTransaction.billTo = self.billTo;
+    }
+
+    if (self.totalAmount)
+    {
+        copiedTransaction.totalAmount = self.totalAmount;
     }
     
     return copiedTransaction;

@@ -18,7 +18,12 @@
     {
         _firstName = [NSString string];
         _lastName = [NSString string];
+        _street1 = [NSString string];
+        _city = [NSString string];
+        _state = [NSString string];
         _postalCode = [NSString string];
+        _country = [NSString string];
+        _email = [NSString string];
     }
     return self;
 }
@@ -37,13 +42,36 @@
         copiedAddress.lastName = self.lastName;
     }
     
-    
-    if (self.postalCode)
+    if (self.street1)
     {
-        copiedAddress.postalCode = self.postalCode;
+      copiedAddress.street1 = self.street1;
     }
 
-    
+    if (self.city)
+    {
+      copiedAddress.city = self.city;
+    }
+
+    if (self.state)
+    {
+      copiedAddress.state = self.state;
+    }
+
+    if (self.postalCode)
+    {
+      copiedAddress.postalCode = self.postalCode;
+    }
+
+    if (self.country)
+    {
+      copiedAddress.country = self.country;
+    }
+
+    if (self.email)
+    {
+        copiedAddress.email = self.email;
+    }
+
     return copiedAddress;
 }
 

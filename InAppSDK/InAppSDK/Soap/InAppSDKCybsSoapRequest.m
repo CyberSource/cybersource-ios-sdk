@@ -10,17 +10,34 @@
 #import "InAppSDKSoapStructure.h"
 #import "InAppSDKSoapNode.h"
 #import "InAppSDKSettingsPrivate.h"
+#import "InAppSDKSettings.h"
 
 
 const static float kInAppSDKCybsApiSoapTimeoutInterval = 110.0;
 
 @implementation InAppSDKCybsSoapRequest
 
-+ (InAppSDKCybsSoapRequest *) createRequestWithSoapMessage:(InAppSDKSoapStructure *)aRequestMessage
++ (InAppSDKCybsSoapRequest *) createCardRequestWithSoapMessage:(InAppSDKSoapStructure *)aRequestMessage
+{
+  return [self createRequestWithSoapMessage:aRequestMessage forEndpoint: CYBS_CARD_REQUEST_API_EP];
+}
+
++ (InAppSDKCybsSoapRequest *) createApplePayRequestWithSoapMessage:(InAppSDKSoapStructure *)aRequestMessage
+{
+  return [self createRequestWithSoapMessage:aRequestMessage forEndpoint: CYBS_APPLE_PAY_REQUEST_API_EP];
+}
+
+
++ (InAppSDKCybsSoapRequest *) createRequestWithSoapMessage:(InAppSDKSoapStructure *)aRequestMessage forEndpoint:(int) endpoint
 {
 
-    NSString* requestURLString = [[InAppSDKSettings sharedInstance] getURLfor:CYBS_CARD_REQUEST_API_EP];
-    
+    NSString* requestURLString = [[InAppSDKSettings sharedInstance] getURLfor:endpoint];
+
+    if ([InAppSDKSettings sharedInstance].enableLog)
+    {
+      NSLog(@"\nREQUEST ENDPOINT:\n  %@", requestURLString);
+    }
+
     InAppSDKCybsSoapRequest * newRequest = [InAppSDKCybsSoapRequest requestWithURL:[NSURL URLWithString:requestURLString]];
     [newRequest setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
     

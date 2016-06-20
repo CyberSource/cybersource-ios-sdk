@@ -28,4 +28,14 @@
  */
 
 - (BOOL) performPaymentDataEncryption:(InAppSDKTransactionObject *)aTransactoinObject withDelegate:(id<InAppSDKGatewayDelegate>)aDelegate;
+
+//! Provides the capability to issue an Authorization with \c paramTransaction parameter
+/*! Only one request can be performed at once.
+ \param paramTransaction Transaction data required to make a request. If \c paramTransaction is not complete the request will not be performed.
+ \param paramDelegate delegate which conforms to @see InAppSDKGatewayDelegate protocol
+ \return Returns \c YES if payment request is being performed and \c NO otherwise.
+ */
+
+- (BOOL) performApplePayAuthorization:(InAppSDKTransactionObject *)aTransactoinObject withDelegate:(id<InAppSDKGatewayDelegate>)aDelegate;
+
 @end

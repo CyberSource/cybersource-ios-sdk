@@ -84,8 +84,34 @@
     return security;
 }
 
-
 + (InAppSDKSoapStructure *) createUsernameToken
+{
+
+  InAppSDKSoapStructure * usernameToken = [InAppSDKSoapStructure createElementWithName:@"UsernameToken"
+                                                                         withNamespace:[InAppSDKSoapNamespace securityNamespace]];
+
+
+  [usernameToken addParameter:[InAppSDKSoapStructure createElementWithName:[InAppSDKSoapNamespace wsuNamespace]
+                                                                 withValue:[InAppSDKSoapNamespace userNameDefinition]
+                                                             withNamespace:[InAppSDKSoapNamespace xmlnsNamespace]]];
+
+  [usernameToken addParameter:[InAppSDKSoapStructure createElementWithName:@"Id"
+                                                                 withValue:@"UsernameToken-1"
+                                                             withNamespace:[InAppSDKSoapNamespace wsuNamespace]]];
+
+
+  [usernameToken addChild:[InAppSDKSoapStructure createElementWithName:@"Username"
+                                                             withValue:[[InAppSDKInternal sharedInstance] merchantId]
+                                                         withNamespace:[InAppSDKSoapNamespace securityNamespace]]];
+
+
+  [usernameToken addChild: [InAppSDKSoapStructure createElementWithName:@"Password"
+                                                                withValue:[InAppSDKInternal sharedInstance].password
+                                                            withNamespace:[InAppSDKSoapNamespace securityNamespace]]];
+  return usernameToken;
+}
+
++ (InAppSDKSoapStructure *) createUsernameTokenWithDigest
 {
     
     InAppSDKSoapStructure * usernameToken = [InAppSDKSoapStructure createElementWithName:@"UsernameToken"
@@ -105,9 +131,9 @@
                                                             withValue:[[InAppSDKInternal sharedInstance] merchantId]
                                                         withNamespace:[InAppSDKSoapNamespace securityNamespace]]];
     
-   
+
     [usernameToken addChild:[InAppSDKSoapNode createPasswordWithPasswordType:@"PasswordDigest" withPassword:[InAppSDKInternal sharedInstance].password]];
-    
+
     return usernameToken;
 }
 
@@ -158,16 +184,45 @@
                                                          withValue:anAddress.lastName
                                                      withNamespace:[InAppSDKSoapNamespace transactionNamespace]]];
     }
-    
-    
+
+    if ([anAddress.street1 length])
+    {
+      [billTo addChild:[InAppSDKSoapStructure createElementWithName:@"street1"
+                                                          withValue:anAddress.street1
+                                                      withNamespace:[InAppSDKSoapNamespace transactionNamespace]]];
+    }
+
+    if ([anAddress.city length])
+    {
+      [billTo addChild:[InAppSDKSoapStructure createElementWithName:@"city"
+                                                          withValue:anAddress.city
+                                                      withNamespace:[InAppSDKSoapNamespace transactionNamespace]]];
+    }
+    if ([anAddress.state length])
+    {
+      [billTo addChild:[InAppSDKSoapStructure createElementWithName:@"state"
+                                                          withValue:anAddress.state
+                                                      withNamespace:[InAppSDKSoapNamespace transactionNamespace]]];
+    }
     if ([anAddress.postalCode length])
     {
-        [billTo addChild:[InAppSDKSoapStructure createElementWithName:@"postalCode"
-                                                         withValue:anAddress.postalCode
-                                                     withNamespace:[InAppSDKSoapNamespace transactionNamespace]]];
+      [billTo addChild:[InAppSDKSoapStructure createElementWithName:@"postalCode"
+                                                          withValue:anAddress.postalCode
+                                                      withNamespace:[InAppSDKSoapNamespace transactionNamespace]]];
     }
-    
-    
+    if ([anAddress.country length])
+    {
+      [billTo addChild:[InAppSDKSoapStructure createElementWithName:@"country"
+                                                          withValue:anAddress.country
+                                                      withNamespace:[InAppSDKSoapNamespace transactionNamespace]]];
+    }
+    if ([anAddress.email length])
+    {
+      [billTo addChild:[InAppSDKSoapStructure createElementWithName:@"email"
+                                                          withValue:anAddress.email
+                                                      withNamespace:[InAppSDKSoapNamespace transactionNamespace]]];
+    }
+
     return billTo;
     
 }
@@ -258,6 +313,24 @@
     return card;
 }
 
++ (InAppSDKSoapStructure *) createPurchaseTotalsWithAmount: (NSDecimalNumber *) totalAmount
+{
+  if (totalAmount == nil) {
+    return nil;
+  }
+
+  InAppSDKSoapStructure *purchaseTotals = [InAppSDKSoapStructure createElementWithName:@"purchaseTotals"
+                                                                         withNamespace:[InAppSDKSoapNamespace transactionNamespace]];
+  [purchaseTotals addChild:[InAppSDKSoapStructure createElementWithName:@"currency"
+                                                              withValue:@"USD"
+                                                          withNamespace:[InAppSDKSoapNamespace transactionNamespace]]];
+  [purchaseTotals addChild:[InAppSDKSoapStructure createElementWithName:@"grandTotalAmount"
+                                                              withValue:totalAmount.stringValue
+                                                          withNamespace:[InAppSDKSoapNamespace transactionNamespace]]];
+  return purchaseTotals;
+
+}
+
 
 + (InAppSDKSoapStructure *) createRequestMessageWithTransaction:(InAppSDKTransactionObject *)aTransaction
 {
@@ -297,33 +370,65 @@
         return nil;
     }
     // Add billTo if available.
-    if (aTransaction.billTo)
+    if (aTransaction.billTo) {
         [requestMessage addChild:[InAppSDKSoapNode createBillToWithAddress:aTransaction.billTo]];
-    
-    // add card or encrypted payment data
-    if (aTransaction.encryptedPaymentData) {
-        [requestMessage addChild:[InAppSDKSoapNode createApplePayPaymentSolution]];
-        [requestMessage addChild:[InAppSDKSoapNode createEncryptedPaymentWithPayment:aTransaction.encryptedPaymentData]];
-    } else if (aTransaction.cardData) {
-        [requestMessage addChild:[InAppSDKSoapNode createCardWithCard:aTransaction.cardData]];
     }
+
+    [requestMessage addChild:[InAppSDKSoapNode createCardWithCard:aTransaction.cardData]];
 
     [requestMessage addChild:[InAppSDKSoapNode createEncryptPaymentDataService]];
   
     return requestMessage;
 }
 
++ (InAppSDKSoapStructure *) createApplePayAuthorizationServiceRequestMessageWithTransaction:(InAppSDKTransactionObject *)aTransaction;
+{
+
+    InAppSDKSoapStructure * requestMessage = [InAppSDKSoapNode createRequestMessageWithTransaction:aTransaction];
+
+    if (requestMessage == nil)
+    {
+        return nil;
+    }
+    // Add billTo if available.
+    if (aTransaction.billTo) {
+        [requestMessage addChild:[InAppSDKSoapNode createBillToWithAddress:aTransaction.billTo]];
+    }
+
+    [requestMessage addChild:[InAppSDKSoapNode createPurchaseTotalsWithAmount:aTransaction.totalAmount]];
+
+    // add encrypted payment data
+    [requestMessage addChild:[InAppSDKSoapNode createEncryptedPaymentWithPayment:aTransaction.encryptedPaymentData]];
+
+    [requestMessage addChild:[InAppSDKSoapNode createAuthorizationDataService]];
+    [requestMessage addChild:[InAppSDKSoapNode createApplePayPaymentSolution]];
+    return requestMessage;
+}
+
 + (InAppSDKSoapStructure *) createEncryptPaymentDataService
 {
     
-    InAppSDKSoapStructure * authorizationService = [InAppSDKSoapStructure createElementWithName:@"ccAuthService"
+    InAppSDKSoapStructure * encryptPaymentDataService = [InAppSDKSoapStructure createElementWithName:@"encryptPaymentDataService"
                                                                             withNamespace:[InAppSDKSoapNamespace transactionNamespace]];
     
-    [authorizationService addParameter:[InAppSDKSoapNode createRunTrueParameter]];
+    [encryptPaymentDataService addParameter:[InAppSDKSoapNode createRunTrueParameter]];
     
     
-    return authorizationService;
+    return encryptPaymentDataService;
     
+}
+
++ (InAppSDKSoapStructure *) createAuthorizationDataService
+{
+
+  InAppSDKSoapStructure * authorizationService = [InAppSDKSoapStructure createElementWithName:@"ccAuthService"
+                                                                                withNamespace:[InAppSDKSoapNamespace transactionNamespace]];
+
+  [authorizationService addParameter:[InAppSDKSoapNode createRunTrueParameter]];
+
+
+  return authorizationService;
+
 }
 
 + (InAppSDKSoapStructure *) createRunTrueParameter

@@ -18,6 +18,14 @@
  \param aRequestMessage A request message that is included in the request body.
  \return The \c InAppSDKCybsSoapRequest object
  */
-+ (InAppSDKCybsSoapRequest *) createRequestWithSoapMessage:(InAppSDKSoapStructure *)aRequestMessage;
++ (InAppSDKCybsSoapRequest *) createCardRequestWithSoapMessage:(InAppSDKSoapStructure *)aRequestMessage;
+
+//! Creates CyberSource specific request
+/*! This method composes a SOAP request that inclues \c aRequestMessage in the body.
+ \param aRequestMessage A request message that is included in the request body.
+ \return The \c InAppSDKCybsSoapRequest object
+ */
++ (InAppSDKCybsSoapRequest *) createApplePayRequestWithSoapMessage:(InAppSDKSoapStructure *)aRequestMessage;
+
 
 @end

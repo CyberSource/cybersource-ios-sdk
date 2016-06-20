@@ -79,5 +79,11 @@
  */
 + (InAppSDKSoapStructure *) createEncryptPaymentDataServiceRequestMessageWithTransaction:(InAppSDKTransactionObject *)paramTransaction;
 
+/*! Creates a structure for the \c capture SOAP node.
+ It uses data from \c paramTransaction object of @see InAppSDKTransactionObject
+ \param paramTransaction The transaction object. It must not be nil. The following fields are required and must not be nil:
+ @return @see InAppSDKSoapStructure object
+ */
++ (InAppSDKSoapStructure *) createApplePayAuthorizationServiceRequestMessageWithTransaction:(InAppSDKTransactionObject *)paramTransaction;
 
 @end

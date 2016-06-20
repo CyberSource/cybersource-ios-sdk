@@ -34,6 +34,10 @@ typedef enum
 //! Contains information about the customer address where the bill should be sent, @see InAppSDKAddress
 @property (atomic, strong) InAppSDKAddress *billTo;
 
+//! Contains the total amount of the transaction.
+@property (atomic, strong) NSDecimalNumber *totalAmount;
+
+
 //! Contains transaction type, @see InAppSDKTransactionType
 @property (atomic) InAppSDKTransactionType transactionType;
 
