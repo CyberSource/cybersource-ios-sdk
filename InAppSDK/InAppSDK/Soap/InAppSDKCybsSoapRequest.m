@@ -19,7 +19,7 @@ const static float kInAppSDKCybsApiSoapTimeoutInterval = 110.0;
 + (InAppSDKCybsSoapRequest *) createRequestWithSoapMessage:(InAppSDKSoapStructure *)aRequestMessage
 {
 
-    NSString* requestURLString = [[InAppSDKSettings sharedInstance] getURLfor:CYBS_REQUEST_API_EP];
+    NSString* requestURLString = [[InAppSDKSettings sharedInstance] getURLfor:CYBS_CARD_REQUEST_API_EP];
     
     InAppSDKCybsSoapRequest * newRequest = [InAppSDKCybsSoapRequest requestWithURL:[NSURL URLWithString:requestURLString]];
     [newRequest setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];

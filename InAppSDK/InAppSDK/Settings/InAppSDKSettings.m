@@ -110,7 +110,7 @@ static NSString * const kInAppSDKSettingsKey = @"InAppSDKSettingsKey";
                 case CYBS_SEARCH_API_EP:
                     returnURL = @"https://mobile.ic3.com/payment";
                     break;
-                case CYBS_REQUEST_API_EP:
+                case CYBS_CARD_REQUEST_API_EP:
                     returnURL = @"https://mobile.ic3.com/mpos/transactionProcessor/";
                     break;
                 case CYBS_HELP_API_EP:
@@ -119,6 +119,8 @@ static NSString * const kInAppSDKSettingsKey = @"InAppSDKSettingsKey";
                 case CYBS_FORGET_PASSWORD_API_EP:
                     returnURL = @"https://ebc.cybersource.com/ebc/login/ForgotPassword.do";
                     break;
+                case CYBS_APPLE_PAY_REQUEST_API_EP:
+                  returnURL = @"https://ics2wsa.ic3.com/commerce/1.x/transactionProcessor";
                 default:
                     break;
             }
@@ -134,7 +136,7 @@ static NSString * const kInAppSDKSettingsKey = @"InAppSDKSettingsKey";
                 case CYBS_SEARCH_API_EP:
                     returnURL = @"https://mobiletest.ic3.com/payment";
                     break;
-                case CYBS_REQUEST_API_EP:
+                case CYBS_CARD_REQUEST_API_EP:
                     returnURL = @"https://mobiletest.ic3.com/mpos/transactionProcessor/";
                     break;
                 case CYBS_HELP_API_EP:
@@ -143,6 +145,8 @@ static NSString * const kInAppSDKSettingsKey = @"InAppSDKSettingsKey";
                 case CYBS_FORGET_PASSWORD_API_EP:
                     returnURL = @"https://ebc.cybersource.com/ebc/login/ForgotPassword.do";
                     break;
+                case CYBS_APPLE_PAY_REQUEST_API_EP:
+                    returnURL = @"https://ics2wstesta.ic3.com/commerce/1.x/transactionProcessor";
                 default:
                     break;
             }
