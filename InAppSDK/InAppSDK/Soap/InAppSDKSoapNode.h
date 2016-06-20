@@ -27,6 +27,8 @@
  */
 + (InAppSDKSoapStructure *) createHeader;
 
+
++ (InAppSDKSoapStructure *) createApplePayPaymentSolution;
 /*! Creates a structure for the Body SOAP node.
  It includes \c paramRequestMessage in the body tha was created.
  \param paramRequestMessage the request message as @see InAppSDKSoapStructure object

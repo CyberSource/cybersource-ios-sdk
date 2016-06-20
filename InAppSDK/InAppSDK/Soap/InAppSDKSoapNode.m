@@ -128,6 +128,12 @@
 
 #pragma mark - CyberSource common node
 
++ (InAppSDKSoapStructure *) createApplePayPaymentSolution {
+  InAppSDKSoapStructure * paymentSolution = [InAppSDKSoapStructure createElementWithName:@"paymentSolution"
+                                                                               withValue:@"001" withNamespace:[InAppSDKSoapNamespace transactionNamespace]];
+  return paymentSolution;
+}
+
 + (InAppSDKSoapStructure *) createBillToWithAddress:(InAppSDKAddress *)anAddress
 {
     
@@ -180,17 +186,18 @@
 
   InAppSDKEncryptedPaymentData *keyedInPaymentData = (InAppSDKEncryptedPaymentData *)payment;
 
-  if ([keyedInPaymentData.data length])
-  {
-    [paymentElement addChild:[InAppSDKSoapStructure createElementWithName:@"data"
-                                                      withValue:keyedInPaymentData.data
-                                                  withNamespace:[InAppSDKSoapNamespace transactionNamespace]]];
-  }
 
   if ([keyedInPaymentData.descriptor length])
   {
     [paymentElement addChild:[InAppSDKSoapStructure createElementWithName:@"descriptor"
-                                                      withValue:keyedInPaymentData.descriptor
+                                                                withValue:keyedInPaymentData.descriptor
+                                                            withNamespace:[InAppSDKSoapNamespace transactionNamespace]]];
+  }
+
+  if ([keyedInPaymentData.data length])
+  {
+    [paymentElement addChild:[InAppSDKSoapStructure createElementWithName:@"data"
+                                                      withValue:keyedInPaymentData.data
                                                   withNamespace:[InAppSDKSoapNamespace transactionNamespace]]];
   }
 
@@ -295,8 +302,9 @@
     
     // add card or encrypted payment data
     if (aTransaction.encryptedPaymentData) {
+        [requestMessage addChild:[InAppSDKSoapNode createApplePayPaymentSolution]];
         [requestMessage addChild:[InAppSDKSoapNode createEncryptedPaymentWithPayment:aTransaction.encryptedPaymentData]];
-    } else {
+    } else if (aTransaction.cardData) {
         [requestMessage addChild:[InAppSDKSoapNode createCardWithCard:aTransaction.cardData]];
     }
 
