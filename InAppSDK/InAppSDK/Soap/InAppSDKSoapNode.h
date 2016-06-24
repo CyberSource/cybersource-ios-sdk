@@ -22,10 +22,20 @@
  */
 + (InAppSDKSoapStructure *) createEnvelope;
 
+/*! Creates a structure for the Envelope SOAP node
+ @return @see InAppSDKSoapStructure object
+ */
++ (InAppSDKSoapStructure *) createEnvelopeUsePasswordDigest: (BOOL) shouldUsePasswordDigest;
+
 /*! Creates a structure for the Header SOAP node
  @return @see InAppSDKSoapStructure object
  */
 + (InAppSDKSoapStructure *) createHeader;
+
+/*! Creates a structure for the Header SOAP node
+ @return @see InAppSDKSoapStructure object
+ */
++ (InAppSDKSoapStructure *) createHeaderUsePasswordDigest: (BOOL) shouldUsePasswordDigest;
 
 
 + (InAppSDKSoapStructure *) createApplePayPaymentSolution;
@@ -60,10 +70,22 @@
  */
 + (InAppSDKSoapStructure *) createSecurity;
 
+/*! Creates a structure for \c security SOAP node
+ @return @see InAppSDKSoapStructure object
+ */
++ (InAppSDKSoapStructure *) createSecurityUsePasswordDigest: (BOOL) shouldUseDigest;
+
+
 /*! Creates a structure for the \c usernameToken SOAP node
  @return @see InAppSDKSoapStructure object
  */
 + (InAppSDKSoapStructure *) createUsernameToken;
+
+/*! Creates a structure for the \c usernameToken SOAP node
+ @return @see InAppSDKSoapStructure object
+ */
++ (InAppSDKSoapStructure *) createUsernameTokenUsePasswordDigest: (BOOL) shouldUseDigest;
+
 
 /*! Creates a structure for the \c Password SOAP node
  @return @see InAppSDKSoapStructure object

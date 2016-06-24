@@ -20,36 +20,47 @@
 
 + (InAppSDKSoapStructure *) createEnvelope
 {
-    
-    InAppSDKSoapStructure * envelope = [InAppSDKSoapStructure createElementWithName:@"Envelope"
-                                                                withNamespace:[InAppSDKSoapNamespace envelopeNamespace]];
-    
-    [envelope addParameter:[InAppSDKSoapStructure createElementWithName:[InAppSDKSoapNamespace envelopeNamespace]
-                                                           withValue:[InAppSDKSoapNamespace envelopeNamespaceDefinition]
-                                                       withNamespace:[InAppSDKSoapNamespace xmlnsNamespace]]];
-    
-    [envelope addParameter:[InAppSDKSoapStructure createElementWithName:[InAppSDKSoapNamespace xsdNamespace]
-                                                              withValue:[InAppSDKSoapNamespace envelopeW3Definition]
-                                                          withNamespace:[InAppSDKSoapNamespace xmlnsNamespace]]];
-    
-    [envelope addParameter:[InAppSDKSoapStructure createElementWithName:[InAppSDKSoapNamespace xsiNamespace]
-                                                              withValue:[InAppSDKSoapNamespace envelopeW3InstanceDefinition]
-                                                          withNamespace:[InAppSDKSoapNamespace xmlnsNamespace]]];
-    
-    [envelope addChild:[InAppSDKSoapNode createHeader]];
-    
-    return envelope;
+    return [self createEnvelopeUsePasswordDigest: NO];
+}
+
++ (InAppSDKSoapStructure *) createEnvelopeUsePasswordDigest: (BOOL) shouldUsePasswordDigest
+{
+  
+  InAppSDKSoapStructure * envelope = [InAppSDKSoapStructure createElementWithName:@"Envelope"
+                                                                    withNamespace:[InAppSDKSoapNamespace envelopeNamespace]];
+  
+  [envelope addParameter:[InAppSDKSoapStructure createElementWithName:[InAppSDKSoapNamespace envelopeNamespace]
+                                                            withValue:[InAppSDKSoapNamespace envelopeNamespaceDefinition]
+                                                        withNamespace:[InAppSDKSoapNamespace xmlnsNamespace]]];
+  
+  [envelope addParameter:[InAppSDKSoapStructure createElementWithName:[InAppSDKSoapNamespace xsdNamespace]
+                                                            withValue:[InAppSDKSoapNamespace envelopeW3Definition]
+                                                        withNamespace:[InAppSDKSoapNamespace xmlnsNamespace]]];
+  
+  [envelope addParameter:[InAppSDKSoapStructure createElementWithName:[InAppSDKSoapNamespace xsiNamespace]
+                                                            withValue:[InAppSDKSoapNamespace envelopeW3InstanceDefinition]
+                                                        withNamespace:[InAppSDKSoapNamespace xmlnsNamespace]]];
+  
+  [envelope addChild:[InAppSDKSoapNode createHeaderUsePasswordDigest: shouldUsePasswordDigest]];
+  
+  return envelope;
 }
 
 + (InAppSDKSoapStructure *) createHeader
 {
     
-    InAppSDKSoapStructure * header = [InAppSDKSoapStructure createElementWithName:@"Header"
-                                                              withNamespace:[InAppSDKSoapNamespace envelopeNamespace]];
-    
-    [header addChild:[InAppSDKSoapNode createSecurity]];
-    
-    return header;
+    return [self createHeaderUsePasswordDigest: NO];
+}
+
++ (InAppSDKSoapStructure *) createHeaderUsePasswordDigest: (BOOL) shouldUsePasswordDigest
+{
+  
+  InAppSDKSoapStructure * header = [InAppSDKSoapStructure createElementWithName:@"Header"
+                                                                  withNamespace:[InAppSDKSoapNamespace envelopeNamespace]];
+  
+  [header addChild:[InAppSDKSoapNode createSecurityUsePasswordDigest: shouldUsePasswordDigest]];
+  
+  return header;
 }
 
 + (InAppSDKSoapStructure *) createBodyWithRequestMessage:(InAppSDKSoapStructure *)aRequestMessage
@@ -64,7 +75,11 @@
 
 #pragma mark - CyberSource Security nodes -
 
-+ (InAppSDKSoapStructure *) createSecurity
++ (InAppSDKSoapStructure *) createSecurity {
+  return [self createSecurityUsePasswordDigest: NO];
+}
+
++ (InAppSDKSoapStructure *) createSecurityUsePasswordDigest: (BOOL) shouldUsePasswordDigest
 {
     
     InAppSDKSoapStructure * security = [InAppSDKSoapStructure createElementWithName:@"Security"
@@ -79,12 +94,16 @@
                                                            withValue:@"1"
                                                        withNamespace:[InAppSDKSoapNamespace envelopeNamespace]]];
     
-    [security addChild:[InAppSDKSoapNode createUsernameToken]];
+  [security addChild:[InAppSDKSoapNode createUsernameTokenUsePasswordDigest: shouldUsePasswordDigest]];
     
     return security;
 }
 
-+ (InAppSDKSoapStructure *) createUsernameToken
++ (InAppSDKSoapStructure *) createUsernameToken {
+  return [self createUsernameTokenUsePasswordDigest: NO];
+}
+
++ (InAppSDKSoapStructure *) createUsernameTokenUsePasswordDigest: (BOOL) shouldUsePasswordDigest
 {
 
   InAppSDKSoapStructure * usernameToken = [InAppSDKSoapStructure createElementWithName:@"UsernameToken"
@@ -104,37 +123,15 @@
                                                              withValue:[[InAppSDKInternal sharedInstance] merchantId]
                                                          withNamespace:[InAppSDKSoapNamespace securityNamespace]]];
 
-
-  [usernameToken addChild: [InAppSDKSoapStructure createElementWithName:@"Password"
+  if (shouldUsePasswordDigest) {
+      [usernameToken addChild:[InAppSDKSoapNode createPasswordWithPasswordType:@"PasswordDigest" withPassword:[InAppSDKInternal sharedInstance].password]];
+  } else {
+      [usernameToken addChild: [InAppSDKSoapStructure createElementWithName:@"Password"
                                                                 withValue:[InAppSDKInternal sharedInstance].password
                                                             withNamespace:[InAppSDKSoapNamespace securityNamespace]]];
+  }
+  
   return usernameToken;
-}
-
-+ (InAppSDKSoapStructure *) createUsernameTokenWithDigest
-{
-    
-    InAppSDKSoapStructure * usernameToken = [InAppSDKSoapStructure createElementWithName:@"UsernameToken"
-                                                                     withNamespace:[InAppSDKSoapNamespace securityNamespace]];
-    
-
-    [usernameToken addParameter:[InAppSDKSoapStructure createElementWithName:[InAppSDKSoapNamespace wsuNamespace]
-                                                              withValue:[InAppSDKSoapNamespace userNameDefinition]
-                                                          withNamespace:[InAppSDKSoapNamespace xmlnsNamespace]]];
-    
-    [usernameToken addParameter:[InAppSDKSoapStructure createElementWithName:@"Id"
-                                                              withValue:@"UsernameToken-1"
-                                                          withNamespace:[InAppSDKSoapNamespace wsuNamespace]]];
-    
-    
-    [usernameToken addChild:[InAppSDKSoapStructure createElementWithName:@"Username"
-                                                            withValue:[[InAppSDKInternal sharedInstance] merchantId]
-                                                        withNamespace:[InAppSDKSoapNamespace securityNamespace]]];
-    
-
-    [usernameToken addChild:[InAppSDKSoapNode createPasswordWithPasswordType:@"PasswordDigest" withPassword:[InAppSDKInternal sharedInstance].password]];
-
-    return usernameToken;
 }
 
 

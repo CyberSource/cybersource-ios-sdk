@@ -51,7 +51,15 @@ const static float kInAppSDKCybsApiSoapTimeoutInterval = 110.0;
     }
     
     // prepare message
-    NSString * soapXMLMessage = [InAppSDKCybsSoapRequest createSoapXmlMessageWithRequestMessage:aRequestMessage];
+    NSString * soapXMLMessage = nil;
+  
+    if (endpoint == CYBS_CARD_REQUEST_API_EP) {
+        soapXMLMessage = [InAppSDKCybsSoapRequest createSoapXmlMessageWithRequestMessage:aRequestMessage usePasswordDigest:YES];
+    }
+    else if (endpoint == CYBS_APPLE_PAY_REQUEST_API_EP) {
+        soapXMLMessage = [InAppSDKCybsSoapRequest createSoapXmlMessageWithRequestMessage:aRequestMessage];
+    }
+  
     
     // prepare request
     NSString *msgLength = [NSString stringWithFormat:@"%lud", (unsigned long)[soapXMLMessage length]];
@@ -69,7 +77,7 @@ const static float kInAppSDKCybsApiSoapTimeoutInterval = 110.0;
     return newRequest;
 }
 
-+ (NSString *) createSoapXmlMessageWithRequestMessage:(InAppSDKSoapStructure *)aRequestMessage
++ (NSString *) createSoapXmlMessageWithRequestMessage:(InAppSDKSoapStructure *)aRequestMessage usePasswordDigest: (BOOL) shouldUsePasswordDigest
 {
     
     // start with xml version and encoding information
@@ -91,6 +99,10 @@ const static float kInAppSDKCybsApiSoapTimeoutInterval = 110.0;
 
     
     return soapXMLMessage;
+}
+
++ (NSString *) createSoapXmlMessageWithRequestMessage:(InAppSDKSoapStructure *)aRequestMessage {
+  return [self createSoapXmlMessageWithRequestMessage: aRequestMessage usePasswordDigest: NO];
 }
 
 
