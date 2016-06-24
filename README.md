@@ -46,7 +46,7 @@ transactionObject.cardData = [self getTestCardData];
 
 //Initialize the InAppSDK Gateway and call performPaymentDataEncryption and implement the Delegate.
 InAppSDKGateway * gateway = [InAppSDKGateway sharedInstance]; 
-result = [gatway performPaymentDataEncryption:transactionObject withDelegate:self];
+result = [gateway performPaymentDataEncryption:transactionObject withDelegate:self];
     
 if (result)
 {
@@ -122,6 +122,40 @@ else
   merchantData.passwordDigest = signature;
   return merchantData; 
 }
+```
+
+##Using Apple Pay
+The flow for using Apple Pay is largely the same as using the `performPaymentDataEncryption` method. The biggest difference is that instead of using the `cardData` property of the `InAppSDKTransasctionObject`, populate the `encryptedPaymentData` property with a base64-encoded string value from `PKPaymentToken.paymentData`. Then call the `performApplePayAuthorization` method consistent with the above.
+```objc
+-(void) performApplePayAuthorization
+{
+ BOOL result = NO;
+ 
+//Initialize the InAppSDK for CYBS Gateway Environtment.
+[InAppSDKSettings sharedInstance].inAppSDKEnvironment = INAPPSDK_ENV_TEST;
+
+//Initialize the transaction object which collects all the required information for the encrypt service.
+//Refer: InAppSDKTransactionObject.h
+InAppSDKTransactionObject * transactionObject = [[InAppSDKTransactionObject alloc] init];
+
+//Set First Name, Last Name and Postal Code. These are optional Values, not mandatory.
+//Refer: InAppSDKAddress.h
+transactionObject.billTo = [self getBillToData];
+    
+//Get and Set the Merchant specific credentials [merchantID, Signature, merchant Reference code etc.] 
+//Refer: InAppSDKMerchant.h
+transactionObject.merchant = [self getMerchantData];
+
+//Get and Set the encryptedPaymentData [ supplied by PKPaymentToken ] 
+//Refer: InAppSDKCardData.h
+transactionObject.encryptedPaymentData = [applePayToken base64EncodedStringWithOptions: 0];
+
+//Initialize the InAppSDK Gateway and call performPaymentDataEncryption and implement the Delegate.
+InAppSDKGateway * gateway = [InAppSDKGateway sharedInstance]; 
+result = [gateway performApplePayAuthorization:transactionObject withDelegate:self];
+    
+...
+
 ```
 
 ##Sample Application
