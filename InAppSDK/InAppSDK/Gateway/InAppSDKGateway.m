@@ -53,4 +53,19 @@ __strong static InAppSDKGateway * _sharedInstance = nil;
     }
 }
 
+- (BOOL) performApplePayAuthorization:(InAppSDKTransactionObject *)aTransactoinObject withDelegate:(id<InAppSDKGatewayDelegate>)aDelegate
+{
+  if (aTransactoinObject == nil ||
+      aTransactoinObject.encryptedPaymentData == nil ||
+      aTransactoinObject.merchant == nil ||
+      aDelegate == nil)
+  {
+    return NO;
+  }
+  else
+  {
+    return [[InAppSDKGatewayCore sharedInstance] performApplePayAuthorization:aTransactoinObject withDelegate:aDelegate];
+  }
+}
+
 @end

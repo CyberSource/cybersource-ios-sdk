@@ -29,7 +29,7 @@
 // This part of the code that generates the Signature is present here only to show as the sample.
 // Signature generation should be done at the Merchant Server.
 
--(NSString*) generateSignatureWithMerchantId: (NSString *) merchantId
++(NSString*) generateSignatureWithMerchantId: (NSString *) merchantId
                      transactionSecretKey: (NSString *) transactionSecretKey
                     merchantReferenceCode: (NSString *) merchantReferenceCode
 {
@@ -53,7 +53,7 @@
 }
 
 
-- (NSString *) totalAmountFormatterWith: (NSDecimalNumber *) totalAmount
++ (NSString *) totalAmountFormatterWith: (NSDecimalNumber *) totalAmount
 {
     NSNumberFormatter * formatter = [[NSNumberFormatter alloc] init];
     [formatter setNumberStyle: NSNumberFormatterDecimalStyle];
@@ -63,7 +63,7 @@
     return [formatter stringFromNumber:totalAmount];
 }
 
--(NSString*) formatFingerprintDate: (NSDate*) date
++ (NSString*) formatFingerprintDate: (NSDate*) date
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     NSTimeZone* tz = [NSTimeZone timeZoneWithName:@"UTC"];
@@ -73,7 +73,7 @@
     return [dateFormatter stringFromDate:date];
 }
 
-- (NSString *)stringSha1:(NSString *)value
++ (NSString *)stringSha1:(NSString *)value
 {
     const char *cstr = [value cStringUsingEncoding:NSUTF8StringEncoding];
     NSData *data = [NSData dataWithBytes:cstr length:value.length];
@@ -88,7 +88,7 @@
     return [self stringHexEncode:digest withLength:CC_SHA1_DIGEST_LENGTH];
 }
 
-- (NSString *)stringHmacSha256:(NSString *)value
++ (NSString *)stringHmacSha256:(NSString *)value
 {
     CCHmacContext ctx;
     const char* utf8ValueString = [value UTF8String];
@@ -103,7 +103,7 @@
     return [self stringHexEncode:hmacData withLength:CC_SHA256_DIGEST_LENGTH];
 }
 
--(NSString*) stringHexEncode: (uint8_t*) data withLength: (NSInteger) dataLength
++ (NSString*) stringHexEncode: (uint8_t*) data withLength: (NSInteger) dataLength
 {
     NSMutableString* output = [NSMutableString stringWithCapacity:dataLength * 2];
     
@@ -116,7 +116,7 @@
     return output;
 }
 
-- (NSString*)base64forData:(NSData*)theData
++ (NSString*)base64forData:(NSData*)theData
 {
     
     const uint8_t* input = (const uint8_t*)[theData bytes];

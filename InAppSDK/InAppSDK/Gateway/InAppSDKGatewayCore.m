@@ -19,6 +19,7 @@
 #import "InAppSDKStringValidator.h"
 #import "InAppSDKCardFieldsValidator.h"
 #import "InAppSDKCardData.h"
+#import "InAppSDKEncryptedPaymentValidator.h"
 
 
 
@@ -73,6 +74,33 @@
     }
 }
 
+- (BOOL) performApplePayAuthorization:(InAppSDKTransactionObject *)paramTransaction withDelegate:(id<InAppSDKGatewayDelegate>)paramDelegate
+{
+  // Perform one request at a time
+  if (([self isGWServiceInProgress]) || (paramTransaction == nil))
+  {
+    return NO;
+  }
+
+  if (![self verifyTransactionObject:paramTransaction withDelegate:paramDelegate])
+  {
+    return NO;
+  }
+  else
+  {
+    // Initialize the InAppSDKInternal with credetials.
+    [InAppSDKInternal sharedInstance].merchantId = paramTransaction.merchant.merchantID;
+    [InAppSDKInternal sharedInstance].password = paramTransaction.merchant.passwordDigest;
+    [InAppSDKInternal sharedInstance].userName = paramTransaction.merchant.userName;
+
+
+    BOOL encryptionRequested = [InAppSDKCybsServiceAPIs requestApplePayAuthorizationService:paramTransaction withDelegate: self];
+
+    return encryptionRequested;
+  }
+}
+
+
 
 - (BOOL) verifyTransactionObject:(InAppSDKTransactionObject *)paramTransaction withDelegate:(id<InAppSDKGatewayDelegate>)paramDelegate
 {
@@ -86,9 +114,10 @@
     {
         if ([paramTransaction.merchant.merchantID length] == 0 ||
             [paramTransaction.merchant.passwordDigest length] == 0 ||
-            ![InAppSDKCardFieldsValidator validateCardWithLuhnAlgorithm:paramTransaction.cardData.accountNumber] ||
-            ![InAppSDKCardFieldsValidator validateExpirationDateWithMonthString:paramTransaction.cardData.expirationMonth andYearString:paramTransaction.cardData.expirationYear] /*||
-            ![InAppSDKCardFieldsValidator validateSecurityCodeWithString:paramTransaction.cardData.cvNumber] */
+             (
+              ![InAppSDKCardFieldsValidator isValidCardData:paramTransaction.cardData] &&
+              ![InAppSDKEncryptedPaymentValidator isValidEncryptedPaymentData:paramTransaction.encryptedPaymentData]
+             )
             )
 
         {

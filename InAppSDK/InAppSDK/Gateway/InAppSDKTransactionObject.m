@@ -7,7 +7,7 @@
 //
 #import "InAppSDKCardData.h"
 #import "InAppSDKMerchant.h"
-
+#import "InAppSDKEncryptedPaymentData.h"
 #import "InAppSDKTransactionObject.h"
 
 @implementation InAppSDKTransactionObject
@@ -19,6 +19,9 @@
     {
         _merchant = nil;
         _cardData = nil;
+        _billTo = nil;
+        _encryptedPaymentData = nil;
+        _totalAmount = nil;
     }
     return self;
 }
@@ -36,6 +39,21 @@
     if (self.cardData)
     {
         copiedTransaction.cardData = [self.cardData copy];
+    }
+
+    if (self.encryptedPaymentData)
+    {
+        copiedTransaction.encryptedPaymentData = [self.encryptedPaymentData copy];
+    }
+
+    if (self.billTo)
+    {
+        copiedTransaction.billTo = self.billTo;
+    }
+
+    if (self.totalAmount)
+    {
+        copiedTransaction.totalAmount = self.totalAmount;
     }
     
     return copiedTransaction;

@@ -30,5 +30,5 @@ static const int kInAppSDKZipCodeCharacterCountMax = 5;
 //! advance validation
 + (BOOL) validateExpirationDateWithMonthString:(NSString *)aMonth andYearString:(NSString *)aYear;
 + (BOOL) validateCardWithLuhnAlgorithm:(NSString*)cardNumber;
-
++ (BOOL) isValidCardData:(InAppSDKCardData*)cardData;
 @end

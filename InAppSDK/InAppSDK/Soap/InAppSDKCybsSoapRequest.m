@@ -10,17 +10,34 @@
 #import "InAppSDKSoapStructure.h"
 #import "InAppSDKSoapNode.h"
 #import "InAppSDKSettingsPrivate.h"
+#import "InAppSDKSettings.h"
 
 
 const static float kInAppSDKCybsApiSoapTimeoutInterval = 110.0;
 
 @implementation InAppSDKCybsSoapRequest
 
-+ (InAppSDKCybsSoapRequest *) createRequestWithSoapMessage:(InAppSDKSoapStructure *)aRequestMessage
++ (InAppSDKCybsSoapRequest *) createCardRequestWithSoapMessage:(InAppSDKSoapStructure *)aRequestMessage
+{
+  return [self createRequestWithSoapMessage:aRequestMessage forEndpoint: CYBS_CARD_REQUEST_API_EP];
+}
+
++ (InAppSDKCybsSoapRequest *) createApplePayRequestWithSoapMessage:(InAppSDKSoapStructure *)aRequestMessage
+{
+  return [self createRequestWithSoapMessage:aRequestMessage forEndpoint: CYBS_APPLE_PAY_REQUEST_API_EP];
+}
+
+
++ (InAppSDKCybsSoapRequest *) createRequestWithSoapMessage:(InAppSDKSoapStructure *)aRequestMessage forEndpoint:(int) endpoint
 {
 
-    NSString* requestURLString = [[InAppSDKSettings sharedInstance] getURLfor:CYBS_REQUEST_API_EP];
-    
+    NSString* requestURLString = [[InAppSDKSettings sharedInstance] getURLfor:endpoint];
+
+    if ([InAppSDKSettings sharedInstance].enableLog)
+    {
+      NSLog(@"\nREQUEST ENDPOINT:\n  %@", requestURLString);
+    }
+
     InAppSDKCybsSoapRequest * newRequest = [InAppSDKCybsSoapRequest requestWithURL:[NSURL URLWithString:requestURLString]];
     [newRequest setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
     
@@ -34,7 +51,15 @@ const static float kInAppSDKCybsApiSoapTimeoutInterval = 110.0;
     }
     
     // prepare message
-    NSString * soapXMLMessage = [InAppSDKCybsSoapRequest createSoapXmlMessageWithRequestMessage:aRequestMessage];
+    NSString * soapXMLMessage = nil;
+  
+    if (endpoint == CYBS_CARD_REQUEST_API_EP) {
+        soapXMLMessage = [InAppSDKCybsSoapRequest createSoapXmlMessageWithRequestMessage:aRequestMessage usePasswordDigest:YES];
+    }
+    else if (endpoint == CYBS_APPLE_PAY_REQUEST_API_EP) {
+        soapXMLMessage = [InAppSDKCybsSoapRequest createSoapXmlMessageWithRequestMessage:aRequestMessage];
+    }
+  
     
     // prepare request
     NSString *msgLength = [NSString stringWithFormat:@"%lud", (unsigned long)[soapXMLMessage length]];
@@ -52,7 +77,7 @@ const static float kInAppSDKCybsApiSoapTimeoutInterval = 110.0;
     return newRequest;
 }
 
-+ (NSString *) createSoapXmlMessageWithRequestMessage:(InAppSDKSoapStructure *)aRequestMessage
++ (NSString *) createSoapXmlMessageWithRequestMessage:(InAppSDKSoapStructure *)aRequestMessage usePasswordDigest: (BOOL) shouldUsePasswordDigest
 {
     
     // start with xml version and encoding information
@@ -74,6 +99,10 @@ const static float kInAppSDKCybsApiSoapTimeoutInterval = 110.0;
 
     
     return soapXMLMessage;
+}
+
++ (NSString *) createSoapXmlMessageWithRequestMessage:(InAppSDKSoapStructure *)aRequestMessage {
+  return [self createSoapXmlMessageWithRequestMessage: aRequestMessage usePasswordDigest: NO];
 }
 
 

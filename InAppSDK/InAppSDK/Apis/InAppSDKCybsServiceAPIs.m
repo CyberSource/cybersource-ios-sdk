@@ -37,7 +37,7 @@
     // create request
     InAppSDKRequestInfo * newRequestInfo = [[InAppSDKRequestInfo alloc] init];
     newRequestInfo.delegate = aDelegate;
-    newRequestInfo.request = [InAppSDKCybsSoapRequest createRequestWithSoapMessage:requestMessage];
+    newRequestInfo.request = [InAppSDKCybsSoapRequest createCardRequestWithSoapMessage:requestMessage];
     newRequestInfo.requestType = INAPPSDK_GATEWAY_API_TYPE_ENCRYPT;
     if (newRequestInfo.request == nil)
     {
@@ -50,6 +50,41 @@
     
     return YES;
     
+}
+
++ (BOOL) requestApplePayAuthorizationService:(InAppSDKTransactionObject *)aTransaction withDelegate:(id<InAppSDKClientServerDelegate>)aDelegate;
+{
+
+    if (aDelegate == nil)
+    {
+      // will not proceed with request if there is no delegate to handle to respond
+      return NO;
+    }
+
+    InAppSDKSoapStructure * requestMessage = [InAppSDKSoapNode createApplePayAuthorizationServiceRequestMessageWithTransaction:aTransaction];
+
+    if (requestMessage == nil)
+    {
+      // request message failed to be created
+      return NO;
+    }
+
+    // create request
+    InAppSDKRequestInfo * newRequestInfo = [[InAppSDKRequestInfo alloc] init];
+    newRequestInfo.delegate = aDelegate;
+    newRequestInfo.request = [InAppSDKCybsSoapRequest createApplePayRequestWithSoapMessage:requestMessage];
+    newRequestInfo.requestType = INAPPSDK_GATEWAY_API_TYPE_ENCRYPT;
+    if (newRequestInfo.request == nil)
+    {
+      // request failed to be created
+      return NO;
+    }
+
+    // execute request
+    [[InAppSDKConnection sharedInstance] makeRequest:newRequestInfo];
+
+    return YES;
+
 }
 
 

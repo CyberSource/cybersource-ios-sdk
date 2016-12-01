@@ -25,4 +25,11 @@
  */
 - (BOOL) performPaymentDataEncryption:(InAppSDKTransactionObject *)aTransactoinObject withDelegate:(id<InAppSDKGatewayDelegate>)aDelegate;
 
+//! Provides the capability authorize a payment using Apple Pay encrypted payment data.
+/*! Only one request can be performed at once.
+ \param aDelegate delegate which conforms to @see InAppSDKGatewayDelegate protocol
+ \return Returns \c YES if payment request is being performed and \c NO otherwise.
+ */
+- (BOOL) performApplePayAuthorization:(InAppSDKTransactionObject *)aTransactoinObject withDelegate:(id<InAppSDKGatewayDelegate>)aDelegate;
+
 @end

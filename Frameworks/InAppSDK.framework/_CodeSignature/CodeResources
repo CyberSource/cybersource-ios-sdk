@@ -6,11 +6,11 @@
 	<dict>
 		<key>Headers/InAppSDK.h</key>
 		<data>
-		AksJIq0QladFdXRLafHKyxhlHX0=
+		Hk05oXGzUw3HeKOO3CXBLpQD9t0=
 		</data>
 		<key>Headers/InAppSDKAddress.h</key>
 		<data>
-		QcFS6bx94xRDLC9kpcx6RHD4VK0=
+		cF18SEutYdPVc4sjEC+e8r3HXbk=
 		</data>
 		<key>Headers/InAppSDKCardData.h</key>
 		<data>
@@ -20,13 +20,17 @@
 		<data>
 		PPC0JquqMUGPxXWDmtFYayAasVk=
 		</data>
+		<key>Headers/InAppSDKEncryptedPaymentData.h</key>
+		<data>
+		Wu2ledHmJe8ckuI+M1XZ7IX9osU=
+		</data>
 		<key>Headers/InAppSDKError.h</key>
 		<data>
 		uAcP++qGbi7D7uRDVTzhvvJK288=
 		</data>
 		<key>Headers/InAppSDKGateway.h</key>
 		<data>
-		EG5auiBtwIHxdUXlzGpIswRlu7E=
+		QMKMt+Gw9mDFPCLWSvAtgrSF9Zw=
 		</data>
 		<key>Headers/InAppSDKGatewayError.h</key>
 		<data>
@@ -48,13 +52,17 @@
 		<data>
 		2WIdYGnqDIXfWPrWoewfp4CuNLI=
 		</data>
+		<key>Headers/InAppSDKSignatureGenerator.h</key>
+		<data>
+		wTbdNIKYMeRWdXgLmQwaP4Mu2OA=
+		</data>
 		<key>Headers/InAppSDKTransactionObject.h</key>
 		<data>
-		X+r7GQotytmkjgvxMGBmuUP5tpI=
+		qVrYQ4lh32AbJWDWUkTgs21i+9U=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		2ovXXwALJvXK89A1Y3xGkF9++Tk=
+		0OtmJmvznnLT1iwEOUjpg2e9q0g=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -64,57 +72,170 @@
 	<key>files2</key>
 	<dict>
 		<key>Headers/InAppSDK.h</key>
-		<data>
-		AksJIq0QladFdXRLafHKyxhlHX0=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			Hk05oXGzUw3HeKOO3CXBLpQD9t0=
+			</data>
+			<key>hash2</key>
+			<data>
+			7oPVdGw3dBtIc6R2gp9SE+EOmSWz+7iBZ5zZDfEqHt0=
+			</data>
+		</dict>
 		<key>Headers/InAppSDKAddress.h</key>
-		<data>
-		QcFS6bx94xRDLC9kpcx6RHD4VK0=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			cF18SEutYdPVc4sjEC+e8r3HXbk=
+			</data>
+			<key>hash2</key>
+			<data>
+			fcGYUmk5EdsAs92ruvC9w2k1ePpjugsYrHvB839Ie9Q=
+			</data>
+		</dict>
 		<key>Headers/InAppSDKCardData.h</key>
-		<data>
-		5pYi/gxcuaSt84nR1L4y/T19lTQ=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			5pYi/gxcuaSt84nR1L4y/T19lTQ=
+			</data>
+			<key>hash2</key>
+			<data>
+			0SOys/SImuKvJdMzK8csrNMgGKIZcxKpC7QihWjp8f8=
+			</data>
+		</dict>
 		<key>Headers/InAppSDKEncryptedPayment.h</key>
-		<data>
-		PPC0JquqMUGPxXWDmtFYayAasVk=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			PPC0JquqMUGPxXWDmtFYayAasVk=
+			</data>
+			<key>hash2</key>
+			<data>
+			rDumoqAnsJRG6uPWkuTDnEuJrmfssvdQJbB9iEnoBlI=
+			</data>
+		</dict>
+		<key>Headers/InAppSDKEncryptedPaymentData.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			Wu2ledHmJe8ckuI+M1XZ7IX9osU=
+			</data>
+			<key>hash2</key>
+			<data>
+			FjQFnFOQUt/QmNur/Z0wkNVw0Otab3tAHHPCQVbx9iU=
+			</data>
+		</dict>
 		<key>Headers/InAppSDKError.h</key>
-		<data>
-		uAcP++qGbi7D7uRDVTzhvvJK288=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			uAcP++qGbi7D7uRDVTzhvvJK288=
+			</data>
+			<key>hash2</key>
+			<data>
+			3qwa5A/CUESof4nmD0TQPrHd3i1TpilUd+ohIMpwP4Y=
+			</data>
+		</dict>
 		<key>Headers/InAppSDKGateway.h</key>
-		<data>
-		EG5auiBtwIHxdUXlzGpIswRlu7E=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			QMKMt+Gw9mDFPCLWSvAtgrSF9Zw=
+			</data>
+			<key>hash2</key>
+			<data>
+			ZMoKYPhxfZ9GtvRmv3VJ/mhhDFlGv2r0R5gZaF7lkjE=
+			</data>
+		</dict>
 		<key>Headers/InAppSDKGatewayError.h</key>
-		<data>
-		nZwtQJOP5SbH6p8olHhl7qPs8OU=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			nZwtQJOP5SbH6p8olHhl7qPs8OU=
+			</data>
+			<key>hash2</key>
+			<data>
+			Ee/ufHMkeULveHn8k1gR+UmdVBLbw7k0VbfC1qd1YMo=
+			</data>
+		</dict>
 		<key>Headers/InAppSDKGatewayProtocol.h</key>
-		<data>
-		KovbQv4cJaCvnC7yRFw7Udyd5Bc=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			KovbQv4cJaCvnC7yRFw7Udyd5Bc=
+			</data>
+			<key>hash2</key>
+			<data>
+			Ro25PJ2CVGFWTWU3LBYVlMX7aUriMPc4LspvqRp1jkA=
+			</data>
+		</dict>
 		<key>Headers/InAppSDKGatewayResponse.h</key>
-		<data>
-		AqpZM/OLKEVG60vUYm9X/rbZ9Tg=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			AqpZM/OLKEVG60vUYm9X/rbZ9Tg=
+			</data>
+			<key>hash2</key>
+			<data>
+			hLoVtATElBvehRnaoPCSI0aw7Na+BDtiF/hT8B9zojk=
+			</data>
+		</dict>
 		<key>Headers/InAppSDKMerchant.h</key>
-		<data>
-		v41PGeChG9ix4Pa/SruQd3RQQkQ=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			v41PGeChG9ix4Pa/SruQd3RQQkQ=
+			</data>
+			<key>hash2</key>
+			<data>
+			Evd4onfeg8l0VicaD4OJQ+GApe0skSM18w/7+uIkSjU=
+			</data>
+		</dict>
 		<key>Headers/InAppSDKSettings.h</key>
-		<data>
-		2WIdYGnqDIXfWPrWoewfp4CuNLI=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			2WIdYGnqDIXfWPrWoewfp4CuNLI=
+			</data>
+			<key>hash2</key>
+			<data>
+			3iPREs3RKzW2dGnLjH4GKASAx7hBkbW29W8hzIX99aA=
+			</data>
+		</dict>
+		<key>Headers/InAppSDKSignatureGenerator.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			wTbdNIKYMeRWdXgLmQwaP4Mu2OA=
+			</data>
+			<key>hash2</key>
+			<data>
+			/DNbS4Uagu/gDw9A1jPcNpEbJqV0TDzkLUmh3U30i1M=
+			</data>
+		</dict>
 		<key>Headers/InAppSDKTransactionObject.h</key>
-		<data>
-		X+r7GQotytmkjgvxMGBmuUP5tpI=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			qVrYQ4lh32AbJWDWUkTgs21i+9U=
+			</data>
+			<key>hash2</key>
+			<data>
+			gwKVlZJxbzvQb9QLilMpvZPu3e5/Mo9nCL5B3McUBF0=
+			</data>
+		</dict>
 		<key>Modules/module.modulemap</key>
-		<data>
-		Z8h0JpSSfw4M6EIixk307rdB8vU=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			Z8h0JpSSfw4M6EIixk307rdB8vU=
+			</data>
+			<key>hash2</key>
+			<data>
+			7Kb6xi9GLvd7BzJzofikinbO8CAKbqIqCLUFmZpBMfw=
+			</data>
+		</dict>
 	</dict>
 	<key>rules</key>
 	<dict>

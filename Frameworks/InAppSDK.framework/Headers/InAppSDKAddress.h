@@ -17,4 +17,14 @@
 //! Postal code
 @property (nonatomic, copy) NSString *postalCode;
 
+@property (nonatomic, copy) NSString *street1;
+
+@property (nonatomic, copy) NSString *city;
+
+@property (nonatomic, copy) NSString *state;
+
+@property (nonatomic, copy) NSString *country;
+
+@property (nonatomic, copy) NSString *email;
+
 @end

@@ -8,6 +8,7 @@
 
 #import "InAppSDKCardFieldsValidator.h"
 #import "InAppSDKStringValidator.h"
+#import "InAppSDKCardData.h"
 
 @implementation InAppSDKCardFieldsValidator
 
@@ -215,6 +216,12 @@
     }
     
     return result;
+}
+
++ (BOOL) isValidCardData:(InAppSDKCardData*)cardData {
+  if (!cardData) { return NO; }
+  return ([self validateCardWithLuhnAlgorithm:cardData.accountNumber] &&
+         [self validateExpirationDateWithMonthString:cardData.expirationMonth andYearString:cardData.expirationYear]);
 }
 
 

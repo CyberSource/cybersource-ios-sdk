@@ -17,11 +17,12 @@
 typedef enum CYBSEndPoints
 {
     CYBS_AUTH_API_EP,
-    CYBS_REQUEST_API_EP,
+    CYBS_CARD_REQUEST_API_EP,
     CYBS_SEARCH_API_EP,
     CYBS_HELP_API_EP,
     CYBS_FORGET_PASSWORD_API_EP,
-    
+    CYBS_APPLE_PAY_REQUEST_API_EP,
+
 } CYBS_END_POINTS;
 
 @interface InAppSDKSettings(Pirvate)

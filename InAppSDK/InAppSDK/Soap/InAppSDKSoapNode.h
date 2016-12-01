@@ -10,6 +10,7 @@
 @class InAppSDKSoapStructure;
 @class InAppSDKCardData;
 @class InAppSDKTransactionObject;
+@class InAppSDKEncryptedPaymentData;
 
 
 @interface InAppSDKSoapNode : NSObject
@@ -21,11 +22,23 @@
  */
 + (InAppSDKSoapStructure *) createEnvelope;
 
+/*! Creates a structure for the Envelope SOAP node
+ @return @see InAppSDKSoapStructure object
+ */
++ (InAppSDKSoapStructure *) createEnvelopeUsePasswordDigest: (BOOL) shouldUsePasswordDigest;
+
 /*! Creates a structure for the Header SOAP node
  @return @see InAppSDKSoapStructure object
  */
 + (InAppSDKSoapStructure *) createHeader;
 
+/*! Creates a structure for the Header SOAP node
+ @return @see InAppSDKSoapStructure object
+ */
++ (InAppSDKSoapStructure *) createHeaderUsePasswordDigest: (BOOL) shouldUsePasswordDigest;
+
+
++ (InAppSDKSoapStructure *) createApplePayPaymentSolution;
 /*! Creates a structure for the Body SOAP node.
  It includes \c paramRequestMessage in the body tha was created.
  \param paramRequestMessage the request message as @see InAppSDKSoapStructure object
@@ -42,6 +55,13 @@
  */
 + (InAppSDKSoapStructure *) createCardWithCard:(InAppSDKCardData*)paramCard;
 
+/*! Creates a structure for the \c encryptedPayment SOAP node.
+ It uses data from \c payment object of @see InAppSDKEncryptedPaymentData
+ \param payment the payment object. It must not be nil.
+ @return @see InAppSDKSoapStructure object or \c nil if the parameter does not meet the requirements.
+ */
++ (InAppSDKSoapStructure *) createEncryptedPaymentWithPayment:(InAppSDKEncryptedPaymentData*) payment;
+
 
 #pragma mark - CyberSource security nodes -
 
@@ -50,10 +70,22 @@
  */
 + (InAppSDKSoapStructure *) createSecurity;
 
+/*! Creates a structure for \c security SOAP node
+ @return @see InAppSDKSoapStructure object
+ */
++ (InAppSDKSoapStructure *) createSecurityUsePasswordDigest: (BOOL) shouldUseDigest;
+
+
 /*! Creates a structure for the \c usernameToken SOAP node
  @return @see InAppSDKSoapStructure object
  */
 + (InAppSDKSoapStructure *) createUsernameToken;
+
+/*! Creates a structure for the \c usernameToken SOAP node
+ @return @see InAppSDKSoapStructure object
+ */
++ (InAppSDKSoapStructure *) createUsernameTokenUsePasswordDigest: (BOOL) shouldUseDigest;
+
 
 /*! Creates a structure for the \c Password SOAP node
  @return @see InAppSDKSoapStructure object
@@ -69,5 +101,11 @@
  */
 + (InAppSDKSoapStructure *) createEncryptPaymentDataServiceRequestMessageWithTransaction:(InAppSDKTransactionObject *)paramTransaction;
 
+/*! Creates a structure for the \c capture SOAP node.
+ It uses data from \c paramTransaction object of @see InAppSDKTransactionObject
+ \param paramTransaction The transaction object. It must not be nil. The following fields are required and must not be nil:
+ @return @see InAppSDKSoapStructure object
+ */
++ (InAppSDKSoapStructure *) createApplePayAuthorizationServiceRequestMessageWithTransaction:(InAppSDKTransactionObject *)paramTransaction;
 
 @end
