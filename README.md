@@ -1,6 +1,6 @@
 # CyberSource iOS SDK
 
-This SDK is provides simple functionality to dispatch sensitive credit card data directly to CyberSource, returning a safe payment token that can be passed up to your mobile backend for standard CyberSource processing without the burden of credit card data ever hitting your server.  With this secure payment token your server can create a CyberSource subscription, long term token or payment.
+This SDK provides simple functionality to dispatch sensitive credit card data directly to CyberSource, returning a safe payment token that can be passed up to your mobile backend for standard CyberSource processing without the burden of credit card data ever hitting your server.  With this secure payment token your server can create a CyberSource subscription, long term token or payment.
 
 **_NOTE: this SDK is not intended for ApplePay transactions but rather is complimentary to the Apple Passkit SDK.  The payment data blobs from this SDK and the Apple Passkit SDK can be treated just the same for CyberSource payment processing._**
 
