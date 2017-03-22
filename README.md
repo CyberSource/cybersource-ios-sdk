@@ -171,4 +171,5 @@ purchaseTotals_grandTotalAmount=200.23
 *** NOTE: You could also make an ics_create_subscription call to create a permanent card-on-file payment token, simply replace the card data fields with the encryptedPayment_data field, and don't forget to set paymentSolution to 004 ***
 
 ## Apple In-App Purchase API  
+  
 Please remember that you are required to use Apple’s In-App Purchase API to sell virtual goods such as premium content for your app, and subscriptions for digital content. Specifically, Apple’s developer terms require that the In-App Purchase API must be used for digital “content, functionality, or services” such as premium features or credits. See https://developer.apple.com/app-store/review/guidelines/ for more details.
