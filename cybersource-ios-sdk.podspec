@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "cybersource-ios-sdk"
-  s.version          = "1.0.0"
+  s.version          = "1.0.1"
   s.summary          = "iOS SDK for CyberSource"
   s.description      = "The CyberSource InApp SDK enables developers to simply and securely incorporate mobile payments into their iOS applications."
   s.homepage         = "https://github.com/CyberSource/cybersource-ios-sdk"
