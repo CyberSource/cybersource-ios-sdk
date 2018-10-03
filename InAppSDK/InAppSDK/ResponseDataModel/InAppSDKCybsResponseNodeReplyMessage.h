@@ -28,20 +28,8 @@
 @property (nonatomic, strong) NSString * missingField;
 //! invalidField node
 @property (nonatomic, strong) NSString * invalidField;
-//! encrypt_payment_data_rcode node
-@property (nonatomic, strong) NSString * encrypt_payment_data_rcode;
-//! ics_return_code node
-@property (nonatomic, strong) NSString * ics_return_code;
-//! encrypt_payment_data_rmsg node
-@property (nonatomic, strong) NSString * encrypt_payment_data_rmsg;
-//! encrypt_payment_data_return_code node
-@property (nonatomic, strong) NSString * encrypt_payment_data_return_code;
-//! ics_rmsg node
-@property (nonatomic, strong) NSString * ics_rmsg;
-//! ics_decision_reason_code node
-@property (nonatomic, strong) NSString * ics_decision_reason_code;
 //! data node
-@property (nonatomic, strong) NSString * encrypted_payment_data;
+@property (nonatomic, strong) NSString * data;
 //! requestDateTime node
 @property (nonatomic, strong) NSString * requestDateTime;
 

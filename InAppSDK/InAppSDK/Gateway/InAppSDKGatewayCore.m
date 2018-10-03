@@ -141,14 +141,12 @@
                 {
                     gatewayResponse.decision = INAPPSDK_GATEWAY_DECISION_TYPE_ACCEPT;
                     InAppSDKEncryptedPayment * encryptedPaymentData = [[InAppSDKEncryptedPayment alloc]init];
-                    encryptedPaymentData.data = response.nodeReplayMessage.encrypted_payment_data;
+                    encryptedPaymentData.data = response.nodeReplayMessage.data;
                     gatewayResponse.encryptedPayment = encryptedPaymentData;
-                    gatewayResponse.rmsg = response.nodeReplayMessage.encrypt_payment_data_rmsg;
                 }
                 else if ([response.nodeReplayMessage.decision isEqualToString:kCybsResponseNodeError])
                 {
                     gatewayResponse.decision = INAPPSDK_GATEWAY_DECISION_TYPE_ERROR;
-                    gatewayResponse.rmsg = response.nodeReplayMessage.encrypt_payment_data_rmsg;
                     paymentError = [InAppSDKCybsApiError createFromResponse:response];
                 }
                 else if ([response.nodeReplayMessage.decision isEqualToString:kCybsResponseNodeReject])
