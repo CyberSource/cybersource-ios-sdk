@@ -31,8 +31,6 @@ typedef enum
 @property (nonatomic, strong) NSString *requestId;
 //! the result code
 @property (nonatomic, strong) NSString *resultCode;
-//! the result code
-@property (nonatomic, strong) NSString *rmsg;
 
 //! Contains the encrypted payment data
 @property (atomic, strong) InAppSDKEncryptedPayment *encryptedPayment;

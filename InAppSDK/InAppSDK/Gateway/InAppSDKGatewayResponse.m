@@ -21,7 +21,6 @@
         _encryptedPayment = nil;
         _date = nil;
         _type = INAPPSDK_GATEWAY_API_TYPE_INIT;
-        _rmsg = nil;
      }
     return self;
 }
