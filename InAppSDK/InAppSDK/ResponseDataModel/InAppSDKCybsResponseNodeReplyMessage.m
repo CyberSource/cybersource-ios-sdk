@@ -26,14 +26,7 @@ static NSString * const kCybsNodeReplyMessage = @"replyMessage";
         _reconciliationID = nil;
         _missingField = nil;
         _invalidField = nil;
-
-        _encrypt_payment_data_rcode = nil;
-        _ics_return_code = nil;
-        _encrypt_payment_data_rmsg = nil;
-        _encrypt_payment_data_return_code = nil;
-        _ics_rmsg = nil;
-        _ics_decision_reason_code = nil;
-        _encrypted_payment_data = nil;
+        _data = nil;
     }
     return self;
 }

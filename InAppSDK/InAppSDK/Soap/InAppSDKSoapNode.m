@@ -235,9 +235,11 @@
                                                              withNamespace:[InAppSDKSoapNamespace transactionNamespace]]];
     }
     
+    NSString* clientLibraryVersion = [[[NSBundle bundleForClass: [self class]] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    NSString* versionString = [NSString stringWithFormat:@"InAppSDK iOS v%@", clientLibraryVersion];
     [requestMessage addChild:[InAppSDKSoapStructure createElementWithName:@"clientLibrary"
-                                                                                     withValue:@"InAppSDK iOS v1.0.0"
-                                                         withNamespace:[InAppSDKSoapNamespace transactionNamespace]]];
+                                                                withValue:versionString
+                                                            withNamespace:[InAppSDKSoapNamespace transactionNamespace]]];
     return requestMessage;
 }
 
